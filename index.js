@@ -69,6 +69,8 @@ if (messageText){
     case 'generic':
       sendChurch(senderID);
       break;
+    case 'video':
+        sendVideoMessage(senderID);
     default:
       sendTextMessage(senderID, messageText);
   }
@@ -130,6 +132,94 @@ function sendAudioMessage(recipientId, messageText){
     }
     callSendAPI(messageData);
 }
+
+function sendVideoMessage(recipientId, messageText){
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment:{
+                type:"audio",
+                payload: {
+                    url: "https://allhealthtips.000webhostapp.com/wp-content/uploads/2017/05/YOUNG-MA-OOOUUU.mp3"
+                }
+            }
+        }
+    }
+    callSendAPI(messageData);
+}
+
+
+
+function receivedPostback(event) {
+  var senderID = event.sender.id;
+  var recipientID = event.recipient.id;
+  var timeOfPostback = event.timestamp;
+
+  // The 'payload' param is a field we put to trigger an action
+  var payload = event.postback.payload;
+  if(payload === "intro"){
+       request({
+      url: "https://graph.facebook.com/v2.6/" + senderID,
+      qs: {
+        access_token: access,
+        fields: "first_name"
+      },
+      method: "GET"
+    }, function(error, response, body) {
+      var greeting = "";
+      if (error) {
+        console.log("Error getting user's name: " +  error);
+      } else {
+        var bodyObj = JSON.parse(body);
+        name = bodyObj.first_name;
+        greeting = "Greetings " + name + ". ";
+      }
+      var message = greeting + "I am the sanctuary bot demo. I will automatically get you church sermons everu sunday, and send you announcements";
+      sendTextMessage(senderID, message);
+     // questionButtons(senderID);
+     quickButtons(senderID);
+
+    });
+
+  console.log("Received postback for user %d and page %d with payload '%s' " +
+    "at %d", senderID, recipientID, payload, timeOfPostback);
+
+  // When a postback is called, we'll send a message back to the sender to
+  // let them know it was successful
+  //quickButtons(senderID);
+callSendAPI(messageData);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
