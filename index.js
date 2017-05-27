@@ -67,7 +67,7 @@ if (messageText){
       sendAudioMessage(senderID);
       break;
     case 'generic':
-      sendGenericMessage(senderID);
+      sendChurch(senderID);
       break;
     default:
       sendTextMessage(senderID, messageText);
