@@ -114,6 +114,26 @@ function sendChurch(recipientId){
     callSendAPI(messageData);
 }
 
+function sendAudioMessage(recipientId, messageText){
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment:{
+                type:"audio",
+                payload: {
+                    url: "https://allhealthtips.000webhostapp.com/wp-content/uploads/2017/05/YOUNG-MA-OOOUUU.mp3"
+                }
+            }
+        }
+    }
+    callSendAPI(messageData);
+}
+
+
+
+
 function sendTextMessage (recipientId, messageText){
   var messageData = {
     recipient : {
