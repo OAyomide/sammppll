@@ -54,11 +54,11 @@ function receivedMessage(event){
   console.log(JSON.stringify(message));
 
   var messageId = message.mid;
-  var messsageText = message.text;
+  var messageText = message.text;
   var messageAttachments = message.attachments;
 
 
-if (messsageText){
+if (messageText){
   switch (messageText) {
     case 'Buttons':
     quickButtons(senderID);
@@ -70,7 +70,7 @@ if (messsageText){
       sendGenericMessage(senderID);
       break;
     default:
-      sendTextMessage(senderID);
+      sendTextMessage(senderID, messageText);
   }
 }
   else if (messageAttachments) {
@@ -120,7 +120,7 @@ function sendTextMessage (recipientId, messageText){
       id: recipientId
     },
     message:{
-      text: messsageText
+      text: messageText
     }
   };
   callSendAPI(messageData);
