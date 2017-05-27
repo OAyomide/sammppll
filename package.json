@@ -1,0 +1,27 @@
+{
+  "name": "sanctuary",
+  "version": "1.0.0",
+  "description": "a demo church bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "sanctuary-test-bot git"
+  },
+  "keywords": [
+    "sanctuary",
+    "bot",
+    "facebook"
+  ],
+  "author": "Onigbinde Ayomide",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.2",
+    "node-schedule": "^1.2.3",
+    "request": "^2.81.0"
+  }
+}
