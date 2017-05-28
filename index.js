@@ -181,19 +181,10 @@ function receivedPostback(event) {
         greeting = "Greetings " + name + ". ";
       }
       var message = greeting + "I am the sanctuary bot demo. I will automatically get you church sermons every sunday, and also send you announcements";
-      sendTextMessage(senderID, "message");
-     // questionButtons(senderID);
-    //  quickButtons(senderID);
-
+      sendTextMessage(senderID, message);
+callSendAPI(messageData);
     });
-
-  console.log("Received postback for user %d and page %d with payload '%s' " +
-    "at %d", senderID, recipientID, payload, timeOfPostback);
-
-  // When a postback is called, we'll send a message back to the sender to
-  // let them know it was successful
-  //quickButtons(senderID);
-  callSendAPI(messageData);
+  
 }
 
 }
