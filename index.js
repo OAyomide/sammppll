@@ -163,27 +163,29 @@ function receivedPostback(event) {
 
   // The 'payload' param is a field we put to trigger an action
   var payload = event.postback.payload;
-  if(payload === "intro"){
-       request({
-      url: "https://graph.facebook.com/v2.6/" + senderID,
-      qs: {
-        access_token: fb_page_token,
-        fields: "first_name"
-      },
-      method: "GET"
-    }, function(error, response, body) {
-      var greeting = "";
-      if (error) {
-        console.log("Error getting user's name: " +  error);
-      } else {
-        var bodyObj = JSON.parse(body);
-        name = bodyObj.first_name;
-        greeting = "Greetings " + name + ". ";
-      }
-      var message = greeting + "I am the sanctuary bot demo. I will automatically get you church sermons every sunday, and also send you announcements";
-      sendTextMessage(senderID, message);
-    });  
-}
+
+  sendTextMessage(senderID, "Hello there")
+//   if(payload === "intro"){
+//        request({
+//       url: "https://graph.facebook.com/v2.6/" + senderID,
+//       qs: {
+//         access_token: fb_page_token,
+//         fields: "first_name"
+//       },
+//       method: "GET"
+//     }, function(error, response, body) {
+//       var greeting = "";
+//       if (error) {
+//         console.log("Error getting user's name: " +  error);
+//       } else {
+//         var bodyObj = JSON.parse(body);
+//         name = bodyObj.first_name;
+//         greeting = "Greetings " + name + ". ";
+//       }
+//       var message = greeting + "I am the sanctuary bot demo. I will automatically get you church sermons every sunday, and also send you announcements";
+//       sendTextMessage(senderID, message);
+//     });  
+// }
 callSendAPI(messageData);
 }
 
