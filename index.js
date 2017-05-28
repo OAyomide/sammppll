@@ -181,7 +181,7 @@ function receivedPostback(event) {
         greeting = "Greetings " + name + ". ";
       }
       var message = greeting + "I am the sanctuary bot demo. I will automatically get you church sermons every sunday, and also send you announcements";
-      sendTextMessage(senderID, message);
+      sendTextMessage(senderID, "message");
      // questionButtons(senderID);
     //  quickButtons(senderID);
 
