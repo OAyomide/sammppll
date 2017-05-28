@@ -183,7 +183,7 @@ function receivedPostback(event) {
       var message = greeting + "I am the sanctuary bot demo. I will automatically get you church sermons every sunday, and also send you announcements";
       sendTextMessage(senderID, message);
      // questionButtons(senderID);
-     quickButtons(senderID);
+    //  quickButtons(senderID);
 
     });
 
