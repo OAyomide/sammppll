@@ -5,7 +5,7 @@ var app = express();
 var schedule = require('node-schedule');
 var port = process.env.PORT || 9000;
 var verify_token = "sample_verify"
-var fb_page_token = 'EAAapZBVF83KsBANqCPlxHOWx5uEU0n8PVeg49rWxbbV8XhsdZBGMGgw9Wwpn4oZBdFxnJ5CegOxTSUz1uBZB7sB2YJ48xzHtZAnE3l6s15ww9HlMfWzPvZCZBJfZCZA12b1ufrroGfOsq2ynxVWgXSYPmTTESIeeeapNJ5aJ0h2pfDwZDZD'
+var fb_page_token = process.env.FB_ACCESS_TOKEN;
 
 app.use(bodyParser.urlencoded({
   extended: false
