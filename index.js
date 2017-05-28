@@ -4,6 +4,8 @@ var request = require('request');
 var app = express();
 var schedule = require('node-schedule');
 var port = process.env.PORT || 9000;
+var verify_token = "sample_verify"
+var fb_page_token = 'EAAapZBVF83KsBANqCPlxHOWx5uEU0n8PVeg49rWxbbV8XhsdZBGMGgw9Wwpn4oZBdFxnJ5CegOxTSUz1uBZB7sB2YJ48xzHtZAnE3l6s15ww9HlMfWzPvZCZBJfZCZA12b1ufrroGfOsq2ynxVWgXSYPmTTESIeeeapNJ5aJ0h2pfDwZDZD'
 
 app.use(bodyParser.urlencoded({
   extended: false
@@ -15,8 +17,10 @@ app.get('/', function(req, res){
   res.send('This is a node web app');
 })
 
+//we are simply setting the URL to the webhook in the route to our node/express app
+
 app.get('/webhook/', function(req, res){
-  if (req.query['hub.verify_token']==="sample_verify") {
+  if (req.query['hub.verify_token']===verify_token) {
     res.send(req.query['hub.challenge'])
   }
   res.send('No access')
@@ -189,8 +193,8 @@ function receivedPostback(event) {
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
   //quickButtons(senderID);
-callSendAPI(messageData);
 }
+callSendAPI(messageData);
 }
 
 
@@ -265,7 +269,7 @@ function callSendAPI (messageData){
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
     qs: {
-      access_token: 'EAAapZBVF83KsBANqCPlxHOWx5uEU0n8PVeg49rWxbbV8XhsdZBGMGgw9Wwpn4oZBdFxnJ5CegOxTSUz1uBZB7sB2YJ48xzHtZAnE3l6s15ww9HlMfWzPvZCZBJfZCZA12b1ufrroGfOsq2ynxVWgXSYPmTTESIeeeapNJ5aJ0h2pfDwZDZD'
+      access_token: ''
     },
     method: 'POST',
     json: messageData
