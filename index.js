@@ -154,40 +154,55 @@ function sendVideoMessage(recipientId, messageText){
     callSendAPI(messageData);
 }
 
-
-
 function receivedPostback(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfPostback = event.timestamp;
 
-  // The 'payload' param is a field we put to trigger an action
+  // The 'payload' param is a developer-defined field which is set in a postback 
+  // button for Structured Messages. 
   var payload = event.postback.payload;
 
-  sendTextMessage(senderID, "Hello there")
-//   if(payload === "intro"){
-//        request({
-//       url: "https://graph.facebook.com/v2.6/" + senderID,
-//       qs: {
-//         access_token: fb_page_token,
-//         fields: "first_name"
-//       },
-//       method: "GET"
-//     }, function(error, response, body) {
-//       var greeting = "";
-//       if (error) {
-//         console.log("Error getting user's name: " +  error);
-//       } else {
-//         var bodyObj = JSON.parse(body);
-//         name = bodyObj.first_name;
-//         greeting = "Greetings " + name + ". ";
-//       }
-//       var message = greeting + "I am the sanctuary bot demo. I will automatically get you church sermons every sunday, and also send you announcements";
-//       sendTextMessage(senderID, message);
-//     });  
-// }
-callSendAPI(messageData);
+  console.log("Received postback for user %d and page %d with payload '%s' " + 
+    "at %d", senderID, recipientID, payload, timeOfPostback);
+
+  // When a postback is called, we'll send a message back to the sender to 
+  // let them know it was successful
+  sendTextMessage(senderID, "Postback called");
 }
+
+// function receivedPostback(event) {
+//   var senderID = event.sender.id;
+//   var recipientID = event.recipient.id;
+//   var timeOfPostback = event.timestamp;
+
+//   // The 'payload' param is a field we put to trigger an action
+//   var payload = event.postback.payload;
+
+//   sendTextMessage(senderID, "Hello there")
+// //   if(payload === "intro"){
+// //        request({
+// //       url: "https://graph.facebook.com/v2.6/" + senderID,
+// //       qs: {
+// //         access_token: fb_page_token,
+// //         fields: "first_name"
+// //       },
+// //       method: "GET"
+// //     }, function(error, response, body) {
+// //       var greeting = "";
+// //       if (error) {
+// //         console.log("Error getting user's name: " +  error);
+// //       } else {
+// //         var bodyObj = JSON.parse(body);
+// //         name = bodyObj.first_name;
+// //         greeting = "Greetings " + name + ". ";
+// //       }
+// //       var message = greeting + "I am the sanctuary bot demo. I will automatically get you church sermons every sunday, and also send you announcements";
+// //       sendTextMessage(senderID, message);
+// //     });  
+// // }
+// callSendAPI(messageData);
+// }
 
 
 
