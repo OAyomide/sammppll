@@ -64,13 +64,13 @@ function receivedMessage(event){
 
 if (messageText){
   switch (messageText) {
-    case 'Buttons':
+    case 'menu':
     quickButtons(senderID);
       break;
     case 'sermon':
       sendAudioMessage(senderID);
       break;
-    case 'generic':
+    case 'banner':
       sendChurch(senderID);
       break;
     case 'video':
@@ -179,8 +179,9 @@ function receivedPostback(event) {
         name = bodyObj.first_name;
         greeting = "Greetings " + name + ". ";
       }
-      var message = greeting + "I am the sanctuary demo bot. I will automatically get you church sermons every sunday, and also send you announcements";
+      var message = greeting + "I am the sanctuary demo bot. I will  get you church sermons every sunday, and also send you announcements(if you want)";
       sendTextMessage(senderID, message);
+      quickButtons(senderID);
     });  
 }
 else if(payload==="sermon"){
@@ -210,7 +211,7 @@ function quickButtons(recipientId){
       id: recipientId
     },
     message:{
-    text:"Quick Action",
+    text:"Quick action",
     quick_replies:[
       {
         content_type:"text",
@@ -220,7 +221,7 @@ function quickButtons(recipientId){
       {
         content_type:"text",
         title:"New sermon",
-        payload:"provide_support"
+        payload:"sermon"
       }
     ]
   }
