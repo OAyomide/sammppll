@@ -166,7 +166,9 @@ function receivedPostback(event) {
   // The 'payload' param is a developer-defined field which is set in a postback 
   // button for Structured Messages. 
   var payload = event.postback.payload;
-  if(payload === "intro"){
+  switch (payload){
+  case "intro":
+  {
        request({
       url: "https://graph.facebook.com/v2.6/" + senderID,
       qs: {
@@ -188,21 +190,24 @@ function receivedPostback(event) {
       quickButtons(senderID);
     });  
 }
-else if(payload==="sermon"){
+  break;
+case "sermon":
+  {
   sendTextMessage(senderID,"Here is the latest audio sermon")
   sendAudioMessage(senderID)
 }
 
-else if(payload==="menu"){
+case "menu":{
   sendChurch(senderID);
 }
-else if(payload==="contact"){
+case "contact":
   contact(senderID);
 }
 
   console.log("Received postback for user %d and page %d with payload '%s' " + 
     "at %d", senderID, recipientID, payload, timeOfPostback);
 }
+
 
 function sendTextMessage (recipientId, messageText){
   var messageData = {
