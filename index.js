@@ -196,6 +196,9 @@ else if(payload==="sermon"){
 else if(payload==="menu"){
   sendChurch(senderID);
 }
+else if(payload==="contact"){
+  contact(senderID);
+}
 
   console.log("Received postback for user %d and page %d with payload '%s' " + 
     "at %d", senderID, recipientID, payload, timeOfPostback);
@@ -237,6 +240,66 @@ function quickButtons(recipientId){
 callSendAPI(messageData);
 }
 
+function contact(recipientId){
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+message:{
+    attachment:{
+      type:"template",
+         payload:{
+            template_type:"list",
+            elements:[
+              {
+                title: "You can contact anybody below for whatever you need",
+                subtitle:"Available contacts",
+                image_url: "http://bloximages.chicago2.vip.townnews.com/tucson.com/content/tncms/assets/v3/editorial/5/ba/5ba33114-c437-50ae-8da2-a5dba111d89f/589e8794f0838.image.jpg",
+              }, {
+                title: "Brother Bayo",
+                subtitle:"Admin. Department",
+                image_url: "https://demovinhasa.files.wordpress.com/2012/06/btrix3.png",
+                buttons:[{
+                  type:"phone_number",
+                  title:"Dial",
+                  payload:"+12345678901"
+                }]
+              },{
+                title:"Pastor Dave",
+                image_url: "https://demovinhasa.files.wordpress.com/2012/06/btrix3.png",
+                subtitle: "Finance department",
+                buttons:[{
+                  type:"phone_number",
+                  title:"Report",
+                  payload:"+12345678901"
+                }]
+              },{
+                title:"Apostle Emma",
+                image_url: "https://demovinhasa.files.wordpress.com/2012/06/btrix3.png",
+                subtitle: "Ushering dept.",
+                buttons:[{
+                  type:"phone_number",
+                  title:"Dial",
+                  payload:"+12345678901"
+              }]},
+	      {
+                title:"Evan. Paul",
+                image_url: "https://demovinhasa.files.wordpress.com/2012/06/btrix3.png",
+                subtitle: "Pastor's Office",
+                buttons:[{
+                  type:"phone_number",
+                  title:"Dial",
+                  payload:"+12345678901"
+              }
+                ]
+              }
+            ]
+         }
+    }
+  }
+}
+callSendAPI(messageData);
+}
 
 function callSendAPI (messageData){
   request({
