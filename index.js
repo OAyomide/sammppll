@@ -80,7 +80,7 @@ if (messageText){
     case '😀':
         sendTextMessage(senderID,'I like to smile too')
     default:
-      sendTextMessage(senderID, messageText);
+      sendTextMessage(senderID, "I don't seem to understand yet");
   }
 }
   else if (messageAttachments) {
@@ -133,7 +133,7 @@ function sendAudioMessage(recipientId, messageText){
             attachment:{
                 type:"audio",
                 payload: {
-                    url: "https://allhealthtips.000webhostapp.com/wp-content/uploads/2017/05/YOUNG-MA-OOOUUU.mp3"
+                    url: "https://drive.google.com/file/d/0B8lzSuMwha_6ODY4SlJpdk1TMW8/view"
                 }
             }
         }
