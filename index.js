@@ -196,12 +196,15 @@ case "sermon":
   sendTextMessage(senderID,"Here is the latest audio sermon")
   sendAudioMessage(senderID)
 }
+break;
 
 case "menu":{
   sendChurch(senderID);
 }
+break;
 case "contact":
   contact(senderID);
+  break;
 }
 
   console.log("Received postback for user %d and page %d with payload '%s' " + 
