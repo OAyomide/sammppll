@@ -282,17 +282,6 @@ message:{
                   title:"Dial",
                   payload:"+12345678901"
               }]},
-	      {
-                title:"Evan. Paul",
-                image_url: "https://demovinhasa.files.wordpress.com/2012/06/btrix3.png",
-                subtitle: "Pastor's Office",
-                buttons:[{
-                  type:"phone_number",
-                  title:"Dial",
-                  payload:"+12345678901"
-              }
-                ]
-              }
             ]
          }
     }
