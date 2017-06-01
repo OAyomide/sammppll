@@ -75,6 +75,10 @@ if (messageText){
       break;
     case 'video':
         sendVideoMessage(senderID);
+    case 'New sermon':
+        sendAudioMessage(senderID);
+    case '😀':
+        sendTextMessage(senderID,'I like to smile too')
     default:
       sendTextMessage(senderID, messageText);
   }
