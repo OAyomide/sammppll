@@ -189,6 +189,10 @@ else if(payload==="sermon"){
   sendAudioMessage(senderID)
 }
 
+else if(payload==="menu"){
+  sendChurch(senderID);
+}
+
   console.log("Received postback for user %d and page %d with payload '%s' " + 
     "at %d", senderID, recipientID, payload, timeOfPostback);
 }
