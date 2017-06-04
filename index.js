@@ -68,6 +68,7 @@ if (messageText){
     quickButtons(senderID);
       break;
     case 'sermon':
+      sendTextMessage(senderID,"Here is a sermon for you")
       sendAudioMessage(senderID);
       break;
     case 'banner':
