@@ -133,7 +133,7 @@ function sendAudioMessage(recipientId, messageText){
             attachment:{
                 type:"audio",
                 payload: {
-                    url: "http://sanctuarybotdemo.ultimatefreehost.in/wp-content/uploads/2017/06/YFN_Lucci_-_Everyday_We_Lit_Remix_Ft_PnB_Rock_Lil_Yachty_Wiz_Khalifa__NaijaExclusive.net_.mp3"
+                    url: "http://sanctuarybot.phpnet.us/wp-content/uploads/2017/06/Sanctuaryclip.mp3"
                 }
             }
         }
