@@ -229,15 +229,23 @@ function sendTextMessage (recipientId, messageText){
 
 function download(recipientId){
   var messageData = {
-    recipient:{
+    recipient: {
       id: recipientId
-    },
-    buttons:[{
+    }, message:{
+      attachment:{
+        type: "template",
+        payload:{
+          template_type: "button",
+          text: "Sermon download",
+           buttons:[{
       type: "web_url",
       url: "https://davidabioye.files.wordpress.com/2017/05/14-bishop-david-o-abioye-understanding-the-unlimited-power-of-faith-pt-3a-280517.mp3",
       title: "Download the sermon",
       webview_height_ratio: "full"
     }]
+        }
+      }
+    }
   }
   callSendAPI(messageData);
 }
