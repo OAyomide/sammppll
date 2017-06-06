@@ -5,7 +5,7 @@ var job = schedule.scheduleJob('30 * * * * *', function(){
 
 function error(){
     console.error('This is a cron job function')
-    var date = new Date().getDate(); 
+    var date = new Date().getMonth();
     console.log('The date is: ', date)
 }
     
