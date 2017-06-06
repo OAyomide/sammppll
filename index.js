@@ -134,7 +134,7 @@ function sendAudioMessage(recipientId, messageText){
             attachment:{
                 type:"audio",
                 payload: {
-                    url: "http://sanctuarybot.phpnet.us/wp-content/uploads/2017/06/Sanctuaryclip.mp3"
+                    url: "https://davidabioye.files.wordpress.com/2017/05/14-bishop-david-o-abioye-understanding-the-unlimited-power-of-faith-pt-3a-280517.mp3"
                 }
             }
         }
@@ -151,7 +151,7 @@ function sendVideoMessage(recipientId, messageText){
             attachment:{
                 type:"audio",
                 payload: {
-                    url: "https://allhealthtips.000webhostapp.com/wp-content/uploads/2017/05/YOUNG-MA-OOOUUU.mp3"
+                    url: "https://davidabioye.files.wordpress.com/2017/05/14-bishop-david-o-abioye-understanding-the-unlimited-power-of-faith-pt-3a-280517.mp3"
                 }
             }
         }
