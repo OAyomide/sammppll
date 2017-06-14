@@ -1,11 +1,23 @@
-var schedule = require('node-schedule');
-var job = schedule.scheduleJob('30 * * * * *', function(){
-    error();
-});
+//we create the js variable to create the instance of the 
+var Clarifai = require('clarifai');
 
-function error(){
-    console.error('This is a cron job function')
-    var date = new Date().getMonth();
-    console.log('The date is: ', date)
-}
-    
+  
+  // initialize with your clientId and clientSecret
+  
+  var app = new Clarifai.App(
+    'T3pAJD5fVzpqX2GZf6rNjvt9xPmI3KETZPJyZfMr',
+    'hPlyg9-k2GUSEwA8UU9cfhNIpDdLRDAbWa21M0tj'
+  );
+
+  app.getToken();
+
+  app.models.predict(Clarifai.GENERAL_MODEL, "https://samples.clarifai.com/metro-north.jpg").then(
+    function(response) {
+        console.log(response);
+      // do something with response
+    },
+    function(err) {
+        throw err;
+      console.log('There is an error training the dataset');
+    }
+  );

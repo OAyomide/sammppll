@@ -9,7 +9,7 @@ var verify_token = "sample_verify";
 var feedRead = require('feed-read');
 var request = require('request');
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
-var link = 'https://ada49bb6.ngrok.io/sanctuary/?feed=rss2'
+var link = 'http://feeds.feedburner.com/TechCrunch/'
 //var connection = require('./models/db');
 
 
@@ -284,7 +284,7 @@ function getArticle(callback) {
         }
         else{
                callback(null, articles)
-               console.log("The shit works: ", articles)
+               console.log("The shit works: ", articles[0].title)
         }
     });
 
@@ -294,7 +294,9 @@ function getArticle(callback) {
 
 // getArticle(function(err, res){
 //   if(err) console.log("We have a problem");
-//   console.log("Here is the stuffs: ", res)
+//   console.log("Here is the stuffs: ", res[1].content.toString())
+//   var sly = res[0].content.slice(35, 112);
+//   console.log('Sliced: ', sly);
 // });
 
 function sendArticle(recipientId, articles){
@@ -308,7 +310,7 @@ function sendArticle(recipientId, articles){
                 template_type:"generic",
                 elements:[
                     {
-                        image_url: "https://allhealth.000webhostapp.com/wp-content/uploads/2017/04/health.jpeg",
+                        image_url:res[0].content.slice(35, 112),
                         title: articles[0].title,
                         subtitle: articles[0].published.toString().substring(0, 21),
                         item_url: articles[0].link,
@@ -317,7 +319,7 @@ function sendArticle(recipientId, articles){
                         }
                         ]
                       },{
-                         image_url: "https://allhealth.000webhostapp.com/wp-content/uploads/2017/04/health.jpeg",
+                         image_url: res[1].content.slice(35, 112),
                         title: articles[1].title,
                         subtitle: articles[1].published.toString().substring(0, 21),
                         item_url: articles[1].link,
@@ -326,7 +328,7 @@ function sendArticle(recipientId, articles){
                         }
                         ]
                       },{
-                         image_url: "https://allhealth.000webhostapp.com/wp-content/uploads/2017/04/health.jpeg",
+                         image_url: res[2].content.slice(35, 112),
                         title: articles[2].title,
                         subtitle: articles[2].published.toString().substring(0, 21),
                         item_url: articles[2].link,
@@ -576,18 +578,6 @@ function callSendAPI (messageData){
 }
 
 //we want to subscribe the user to receive the notification. For user ids that exist in the db, send them subscriptions
-
-
-
-
-
-
-
-
-
-
-
-
 //read request npm
 
 app.listen(port, function(req, res){

@@ -20,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "clarifai": "^2.1.8",
     "express": "^4.15.3",
     "feed-read": "0.0.1",
     "mongoose": "^4.10.2",
