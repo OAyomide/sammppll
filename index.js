@@ -318,6 +318,15 @@ function sendArticle(recipientId, articles){
                           type:"element_share"
                         }
                         ]
+                      },{
+                         image_url: "https://allhealth.000webhostapp.com/wp-content/uploads/2017/04/health.jpeg",
+                        title: articles[2].title,
+                        subtitle: articles[2].published.toString().substring(0, 21),
+                        item_url: articles[2].link,
+                        buttons:[{
+                          type:"element_share"
+                        }
+                        ]
                       }
                 ]
             }
