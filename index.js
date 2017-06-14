@@ -1,11 +1,133 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
+var schedule = require('node-schedule');
 var app = express();
 var schedule = require('node-schedule');
 var port = process.env.PORT || 9000;
-var verify_token = "sample_verify"
+var verify_token = "sample_verify";
+var feedRead = require('feed-read');
+var request = require('request');
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
+var link = 'https://ada49bb6.ngrok.io/sanctuary/?feed=rss2'
+//var connection = require('./models/db');
+
+
+// var feed = require('rss-to-json');
+// var rssUrl = "https://ada49bb6.ngrok.io/sanctuary/?feed=rss2"
+
+
+
+// feed.load(rssUrl, function(err, rss){
+//   for(var i = 0; i<3; i++){
+//     console.log("This sucks")
+//     console.log("Feed results: ", rss.items[0]);
+//   }})
+// var mysql = require('mysql');
+// var pool = mysql.createPool({
+//   host: 'localhost',
+//   port: 80,
+//   user: 'root',
+//   database: 'sanctuary',
+//   password:'',
+//   acquireTimeout: 2000000000000000000000,
+// });
+
+// function myQuery(query, cb){
+//   pool.getConnection(function(err, connection){
+//     if(err){
+//       if(connection)
+//         connection.destroy();
+//         cb(err);
+//         return;
+//     }
+//     connection.query(query, function(err, res){
+//       if (err) console.log("Broken. . . ");
+//       console.log("Response: ", res);
+//     });
+//   });
+// };
+
+// myQuery('SELECT * FROM `wp_posts` WHERE post_mime_type="audio/mpeg"',function(err, resp){
+//   if(err)
+//   console.log("Yikes", err)
+//   else if(resp)
+//   console.log("Response: ", resp)
+// });
+// function handleDisconnect(){
+// pool.getConnection(function(err, connection){
+//   if(err) {
+//     console.log('Dude, Error. . . ', err);
+//     console.log('Motherfucker')
+//     return;
+//   }
+//   connection.on('error', function(err){
+//     if(err.code==='PROTOCOL_CONNECTION_LOST'){
+//       console.log('Suck it!!')
+//      pool.getConnection();
+//     } else {
+//       throw err;
+//     }
+//   });
+//   connection.query('SELECT * FROM `wp_posts` WHERE post_mime_type="audio/mpeg"',function(err, results){
+//     if(err){
+//       console.log('Query error: ');
+//     }
+//     console.log('Results: ', results)
+//   });
+//   connection.end();
+// });
+// };
+// handleDisconnect();
+
+
+// var connects = ({
+//     host: "localhost",
+//     user: "root",
+//     password: "christy",
+//     database: "sanctuary"
+// });
+// var connection;
+// // the sermon would be sent to the users every 
+// //time the seconds is 30. E.g 5:30:30, 4:59:30 etc
+// function handleDisconnect(){
+//   connection = mysql.createConnection(connects);
+
+//   connection.connect(function(err){
+//     if(err){
+//       console.log("Error connecting to the DB: ", err);
+//       setTimeout(handleDisconnect, 2000);
+//     }
+//   });
+
+//   connection.on('error', function(err){
+//     console.log('DB error: ', err);
+//     if(err.code==='PROTOCOL_CONNECTION_LOST'){
+//       handleDisconnect();
+//     } else if(err.code==='PROTOCOL_ENQUEUE_AFTER_FATAL_ERROR'){
+//       handleDisconnect();
+//     }
+//     else if(err.code==='PROTOCOL') {
+      
+//     }
+//   })
+// }
+// handleDisconnect();
+// connection.connect(function(error,conn){
+//   if(error) {
+//     console.log("Database connection error: ", error)
+//   return;
+// } 
+// });
+
+
+// connection.query('SELECT * FROM `wp_posts` WHERE post_mime_type="audio/mpeg"', function(err, res){
+//   if(err){
+//     console.log("Error querying the DB");
+//   }
+//   console.log("What the query got: ", res);
+// })
+
 
 app.use(bodyParser.urlencoded({
   extended: false
@@ -46,6 +168,12 @@ app.post('/webhook', function(req, res){
     res.sendStatus(200);
   };
 });
+// function scheduleJob(event){
+//   var senderID = event.sen
+// var job = schedule.scheduleJob('30 * * * * *', function(){
+//   sendAudioMessage(senderID);
+// });
+// }
 
 function receivedMessage(event){
   var senderID = event.sender.id;
@@ -70,17 +198,27 @@ if (messageText){
     case 'sermon':
       sendTextMessage(senderID,"Here is a sermon for you")
       sendAudioMessage(senderID);
-      download(senderID);
       break;
     case 'banner':
       sendChurch(senderID);
       break;
     case 'video':
         sendVideoMessage(senderID);
+        break;
     case 'New sermon':
         sendAudioMessage(senderID);
+        break;
     case '😀':
-        sendTextMessage(senderID,'I like to smile too')
+        sendTextMessage(senderID,'I like to smile too');
+        break;
+    case 'download':
+        download(senderID);
+        break;
+        case 'article':
+          getArticle(function(err, res){
+            sendArticle(senderID, articles);
+          });
+          break;
     default:
       sendTextMessage(senderID, "I don't seem to understand yet");
   }
@@ -89,6 +227,8 @@ if (messageText){
     sendTextMessage(senderID, 'I cannot understand images and multimedia yet.')
   }
 }
+
+
 
 
 function sendChurch(recipientId){
@@ -122,9 +262,75 @@ function sendChurch(recipientId){
             }
         }
     }
-    }
+    };
     callSendAPI(messageData);
 }
+
+
+
+
+
+
+
+function getArticle(callback) {
+    feedRead(link, function(err, articles){
+        if (err){
+            callback(err);
+        }
+        else{
+               callback(null, articles)
+               console.log("The shit works: ", articles)
+        }
+    });
+
+}
+
+// getArticle(function(err, res){
+//   if(err) console.log("We have a problem");
+//   console.log("Here is the stuffs: ", res)
+// });
+
+function sendArticle(recipientId, articles){
+  var messageData ={
+    recipient:{
+      id:recipientId
+    },message:{
+        attachment:{
+            type: "template",
+            payload:{
+                template_type:"generic",
+                elements:[
+                    {
+                        image_url: "https://allhealth.000webhostapp.com/wp-content/uploads/2017/04/health.jpeg",
+                        title: articles[0].title,
+                        subtitle: articles[0].published.toString().substring(0, 21),
+                        item_url: articles[0].link,
+                        buttons:[{
+                          type:"element_share"
+                        }
+                        ]
+                      },{
+                         image_url: "https://allhealth.000webhostapp.com/wp-content/uploads/2017/04/health.jpeg",
+                        title: articles[1].title,
+                        subtitle: articles[1].published.toString().substring(0, 21),
+                        item_url: articles[1].link,
+                        buttons:[{
+                          type:"element_share"
+                        }
+                        ]
+                      }
+                ]
+            }
+        }
+    }
+    };
+    callSendAPI(messageData);
+}
+
+
+
+
+
 
 function sendAudioMessage(recipientId, messageText){
     var messageData = {
@@ -187,7 +393,7 @@ function receivedPostback(event) {
         name = bodyObj.first_name;
         greeting = "Greetings " + name + ". ";
       }
-      var message = greeting + "I am the sanctuary demo bot. I will  get you church sermons every sunday, and also send you announcements(if you want)";
+      var message = greeting + "I am the sanctuary cathedral bot. I will  get you church sermons every sunday, and also send you announcements(if you want)";
       sendTextMessage(senderID, message);
       quickButtons(senderID);
     });  
@@ -197,7 +403,6 @@ case "sermon":
   {
   sendTextMessage(senderID,"Here is the latest audio sermon");
   sendAudioMessage(senderID);
-  download(senderID);
 }
 break;
 
@@ -207,6 +412,9 @@ case "menu":{
 break;
 case "contact":
   contact(senderID);
+  break;
+case "help":
+  quickButtons(senderID);
   break;
 }
 
@@ -262,6 +470,11 @@ function quickButtons(recipientId){
         content_type:"text",
         title:"Announcement",
         payload:"emergency"
+      },
+      {
+        content_type:"text",
+        title:"Download latest sermon",
+        payload:"download"
       },
       {
         content_type:"text",
@@ -346,12 +559,20 @@ function callSendAPI (messageData){
   });
 }
 
+//we want to subscribe the user to receive the notification. For user ids that exist in the db, send them subscriptions
+
+
+
+
+
+
+
+
+
+
+
+
 //read request npm
-
-
-
-
-
 
 app.listen(port, function(req, res){
   console.log('Bot app up and running on port: ', port);
