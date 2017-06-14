@@ -189,6 +189,11 @@ function receivedMessage(event){
   var messageText = message.text;
   var messageAttachments = message.attachments;
 
+var job = schedule.scheduleJob('30 * * * * *', function(){
+            getArticle(function(err, res){
+            sendArticle(senderID, res);
+          });
+});
 
 if (messageText){
   switch (messageText) {
@@ -285,11 +290,7 @@ function getArticle(callback) {
 
 }
 
-var job = schedule.scheduleJob('30 * * * * *', function(){
-            getArticle(function(err, res){
-            sendArticle(senderID, res);
-          });
-});
+
 
 // getArticle(function(err, res){
 //   if(err) console.log("We have a problem");
