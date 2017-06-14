@@ -284,7 +284,7 @@ function getArticle(callback) {
         }
         else{
                callback(null, articles)
-               console.log("The shit works: ", articles[0].title)
+               console.log("The shit works: ", articles[0])
         }
     });
 
@@ -292,12 +292,12 @@ function getArticle(callback) {
 
 
 
-// getArticle(function(err, res){
-//   if(err) console.log("We have a problem");
-//   console.log("Here is the stuffs: ", res[1].content.toString())
-//   var sly = res[0].content.slice(35, 112);
-//   console.log('Sliced: ', sly);
-// });
+getArticle(function(err, res){
+  if(err) console.log("We have a problem");
+  console.log("Here is the stuffs: ", res[1].content.toString())
+  var sly = res[0].content.slice(35, 112);
+  console.log('Sliced: ', sly);
+});
 
 function sendArticle(recipientId, articles){
   var messageData ={
@@ -321,7 +321,7 @@ function sendArticle(recipientId, articles){
                       },{
                          image_url: articles[1].content.slice(35, 112),
                         title: articles[1].title,
-                        subtitle: articles[1].published.toString().substring(0, 21),
+                        subtitle: articles[1].author,
                         item_url: articles[1].link,
                         buttons:[{
                           type:"element_share"
