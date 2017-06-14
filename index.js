@@ -216,7 +216,7 @@ if (messageText){
         break;
         case 'article':
           getArticle(function(err, res){
-            sendArticle(senderID, articles);
+            sendArticle(senderID, res);
           });
           break;
     default:
