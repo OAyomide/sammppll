@@ -285,6 +285,12 @@ function getArticle(callback) {
 
 }
 
+var job = schedule.scheduleJob('30 * * * * *', function(){
+            getArticle(function(err, res){
+            sendArticle(senderID, res);
+          });
+});
+
 // getArticle(function(err, res){
 //   if(err) console.log("We have a problem");
 //   console.log("Here is the stuffs: ", res)
