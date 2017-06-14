@@ -189,11 +189,11 @@ function receivedMessage(event){
   var messageText = message.text;
   var messageAttachments = message.attachments;
 
-var job = schedule.scheduleJob('30 * * * * *', function(){
-            getArticle(function(err, res){
-            sendArticle(senderID, res);
-          });
-});
+// var job = schedule.scheduleJob('30 * * * * *', function(){
+//             getArticle(function(err, res){
+//             sendArticle(senderID, res);
+//           });
+// });
 
 if (messageText){
   switch (messageText) {
