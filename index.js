@@ -310,7 +310,7 @@ function sendArticle(recipientId, articles){
                 template_type:"generic",
                 elements:[
                     {
-                        image_url:res[0].content.slice(35, 112),
+                        image_url:articles[0].content.slice(35, 112),
                         title: articles[0].title,
                         subtitle: articles[0].published.toString().substring(0, 21),
                         item_url: articles[0].link,
@@ -319,7 +319,7 @@ function sendArticle(recipientId, articles){
                         }
                         ]
                       },{
-                         image_url: res[1].content.slice(35, 112),
+                         image_url: articles[1].content.slice(35, 112),
                         title: articles[1].title,
                         subtitle: articles[1].published.toString().substring(0, 21),
                         item_url: articles[1].link,
@@ -328,7 +328,7 @@ function sendArticle(recipientId, articles){
                         }
                         ]
                       },{
-                         image_url: res[2].content.slice(35, 112),
+                         image_url: articles[2].content.slice(35, 112),
                         title: articles[2].title,
                         subtitle: articles[2].published.toString().substring(0, 21),
                         item_url: articles[2].link,
