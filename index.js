@@ -310,7 +310,7 @@ function sendArticle(recipientId, articles){
                 template_type:"generic",
                 elements:[
                     {
-                        image_url:articles[0].content.slice(35, 112) || "http://www.lifefellowship.org/Service-Times-POST.jpg",
+                        image_url:"http://www.lifefellowship.org/Service-Times-POST.jpg",
                         title: articles[0].title,
                         subtitle: articles[0].published.toString().substring(0, 21),
                         item_url: articles[0].link,
