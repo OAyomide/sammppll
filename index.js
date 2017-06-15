@@ -292,12 +292,12 @@ function getArticle(callback) {
 
 
 
-getArticle(function(err, res){
-  if(err) console.log("We have a problem");
-  console.log("Here is the stuffs: ", res[1].content.toString())
-  var sly = res[0].content.slice(35, 112);
-  console.log('Sliced: ', sly);
-});
+// getArticle(function(err, res){
+//   if(err) console.log("We have a problem");
+//   console.log("Here is the stuffs: ", res[1].content.toString())
+//   var sly = res[0].content.slice(35, 112);
+//   console.log('Sliced: ', sly);
+// });
 
 function sendArticle(recipientId, articles){
   var messageData ={
