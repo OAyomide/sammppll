@@ -456,6 +456,8 @@ function callSendAPI (messageData){
   });
 }
 
+
+
 //we want to subscribe the user to receive the notification. For user ids that exist in the db, send them subscriptions
 //read request npm
 
