@@ -284,7 +284,7 @@ function getArticle(callback) {
         }
         else{
                callback(null, articles)
-               console.log("The shit works: ", articles[0])
+               console.log("The shit works: ")
         }
     });
 
@@ -294,8 +294,8 @@ function getArticle(callback) {
 
 getArticle(function(err, res){
   if(err) console.log("We have a problem");
-  console.log("Here is the stuffs: ", res[0].content.toString())
-  var sly = res[1].content.slice(35, 112);
+  console.log("Here is the stuffs: ", res[1].content)
+  var sly = res[1].content.slice(212, 112);
   console.log('Sliced: ', sly);
 });
 
@@ -344,10 +344,6 @@ function sendArticle(recipientId, articles){
     };
     callSendAPI(messageData);
 }
-
-
-
-
 
 
 function sendAudioMessage(recipientId, messageText){
