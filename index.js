@@ -233,7 +233,7 @@ function firstSend(recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
-        }, messag: {
+        }, message: {
             attachment: {
                 type: "template",
                 payload: {
@@ -254,6 +254,7 @@ function firstSend(recipientId) {
             }
         }
     };
+    callSendAPI(messageData);
 };
 
 
