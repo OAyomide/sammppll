@@ -229,6 +229,32 @@ function davidoSelect (recipientId) {
   callSendAPI(messageData);
 }
 
+function firstSend(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, messag: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "You have N30,000,000,000 in your account. What will you buy?",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Buy jewelry",
+                            payload: "buy_jewelry"
+                        }, {
+                            type: "postback",
+                            title: "Buy Car",
+                            payload: "buy_car"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+};
 
 
 
@@ -392,6 +418,8 @@ case "help":
   break;
 case 'davido_select':
   davidoSelect(senderID);
+  firstSend(senderID);
+  break;
 }
 
   console.log("Received postback for user %d and page %d with payload '%s' " + 
