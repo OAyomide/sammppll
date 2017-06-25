@@ -218,7 +218,7 @@ function davidoSelect (recipientId) {
         },
         message: {
             attachment: {
-                type: "gif",
+                type: "image",
                 payload: {
                     url: "http://i.imgur.com/s9bPVaK.gif"
                 }
