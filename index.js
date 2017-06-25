@@ -225,7 +225,6 @@ function davidoSelect (recipientId) {
             }
         }
     }
-            sendTextMessage(recipientId, "Baddest! So let us see if you can live like Davido");
   callSendAPI(messageData);
 }
 
@@ -256,6 +255,24 @@ function firstSend(recipientId) {
     };
     callSendAPI(messageData);
 };
+
+
+function carBought(recipientId){
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment:{
+                type:"image",
+                payload: {
+                    url: "https://media.giphy.com/media/10l91Jwn7ahKGA/giphy.gif"
+                }
+            }
+        }
+    }
+    callSendAPI(messageData);
+}
 
 
 
@@ -413,6 +430,7 @@ case "menu":{
 break;
 case "contact":
   init(senderID);
+  sendTextMessage(recipientId, "Baddest! So let us see if you can live like Davido");
   break;
 case "help":
   quickButtons(senderID);
@@ -421,6 +439,9 @@ case 'davido_select':
   davidoSelect(senderID);
   firstSend(senderID);
   break;
+case 'buy_car':
+  carBought(senderID);
+  sendTextMessage(senderID, 'Nice ride dude!!');
 }
 
   console.log("Received postback for user %d and page %d with payload '%s' " + 
