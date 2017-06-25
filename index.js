@@ -209,10 +209,25 @@ function init (recipientId){
 }
 
 
+//to show user selects davido
 
-
-
-
+function davidoSelect (recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "gif",
+                payload: {
+                    url: "http://i.imgur.com/s9bPVaK.gif"
+                }
+            }
+        }
+    }
+            sendTextMessage(recipientId, "Baddest! So let us see if you can live like Davido");
+  callSendAPI(messageData);
+}
 
 
 
@@ -375,6 +390,8 @@ case "contact":
 case "help":
   quickButtons(senderID);
   break;
+case 'davido_select':
+  davidoSelect(senderID);
 }
 
   console.log("Received postback for user %d and page %d with payload '%s' " + 
