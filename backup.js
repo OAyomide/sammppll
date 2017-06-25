@@ -119,7 +119,7 @@ if (messageText){
 
 
 
-function  sendChurch(recipientId){
+function sendChurch(recipientId){
   var messageData ={
     recipient:{
       id:recipientId
@@ -153,65 +153,6 @@ function  sendChurch(recipientId){
     };
     callSendAPI(messageData);
 }
-
-//we want to init our first selection from our user
-function init (recipientId){
-    var messageData = {
-        recipient: {
-            id: recipientId
-        }, message: {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "list",
-                    elements: [
-                        {
-                            title: "Select a celebrity you want",
-                            subtitle: "Available celebrities",
-                            image_url: "../public/images/celebrities.png"
-                        }, {
-                            title: "Davido",
-                            subtitle: "Artiste",
-                            image_url: "../public/images/celebrities.png",
-                            buttons: [{
-                                type: "postback",
-                                title: "Select",
-                                payload: "davido_select"
-                            }]
-                        }, {
-                            title: "Wizkid",
-                            subtitle: "Artiste",
-                            image_url: "../public/images/celebrities.png",
-                            buttons: [{
-                                type: "postback",
-                                title: "Select",
-                                payload: "wizkid_select"
-                            }]
-                        }, {
-                            title: "Tiwa Savage",
-                            image_url: "../public/images/celebrities.png",
-                            subtitle: "Artiste",
-                            buttons: [{
-                                type: "postback",
-                                title: "Select",
-                                payload: "tiwa_select"
-                            }]
-                        }
-                    ]
-                }
-            }
-        }
-    };
-   callSendAPI(messageData);
-}
-
-
-
-
-
-
-
-
 
 
 
@@ -367,7 +308,7 @@ case "menu":{
 }
 break;
 case "contact":
-  init(senderID);
+  contact(senderID);
   break;
 case "help":
   quickButtons(senderID);
