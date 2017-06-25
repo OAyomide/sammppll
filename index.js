@@ -257,6 +257,37 @@ function firstSend(recipientId) {
 };
 
 
+function secondSend(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "A fine chick wants to hang out with you!",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Hang out & party hard",
+                            payload: "party_hard"
+                        }, {
+                            type: "postback",
+                            title: "Turn down",
+                            payload: "reject_party"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
+
+
+
+
 function carBought(recipientId){
     var messageData = {
         recipient: {
@@ -267,6 +298,23 @@ function carBought(recipientId){
                 type:"image",
                 payload: {
                     url: "https://media.giphy.com/media/10l91Jwn7ahKGA/giphy.gif"
+                }
+            }
+        }
+    }
+    callSendAPI(messageData);
+}
+
+function party(recipientId){
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment:{
+                type:"image",
+                payload: {
+                    url: "http://quotesblog.net/wp-content/uploads/2015/05/party-gifs-hell-yeah.gif"
                 }
             }
         }
@@ -440,8 +488,17 @@ case 'davido_select':
   firstSend(senderID);
   break;
 case 'buy_car':
+{
   carBought(senderID);
+}{
   sendTextMessage(senderID, 'Nice ride dude!!');
+}
+  secondSend(senderID)
+  break;
+  case 'party_hard':
+    party(senderID);
+    sendTextMessage(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
+    break;
 }
 
   console.log("Received postback for user %d and page %d with payload '%s' " + 
