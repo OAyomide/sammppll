@@ -83,6 +83,9 @@ if (messageText){
     case 'menu':
     quickButtons(senderID);
       break;
+    case 'celebs':
+      init(senderID);
+      break;
     case 'sermon':
       sendTextMessage(senderID,"Here is a sermon for you")
       sendAudioMessage(senderID);
@@ -168,11 +171,11 @@ function init (recipientId){
                         {
                             title: "Select a celebrity you want",
                             subtitle: "Available celebrities",
-                            image_url: "../public/images/celebrities.png"
+                            image_url: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg"
                         }, {
                             title: "Davido",
                             subtitle: "Artiste",
-                            image_url: "../public/images/celebrities.png",
+                            image_url: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg",
                             buttons: [{
                                 type: "postback",
                                 title: "Select",
@@ -181,7 +184,7 @@ function init (recipientId){
                         }, {
                             title: "Wizkid",
                             subtitle: "Artiste",
-                            image_url: "../public/images/celebrities.png",
+                            image_url: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg",
                             buttons: [{
                                 type: "postback",
                                 title: "Select",
@@ -189,7 +192,7 @@ function init (recipientId){
                             }]
                         }, {
                             title: "Tiwa Savage",
-                            image_url: "../public/images/celebrities.png",
+                            image_url: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg",
                             subtitle: "Artiste",
                             buttons: [{
                                 type: "postback",
