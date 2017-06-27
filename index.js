@@ -10,7 +10,7 @@ var feedRead = require('feed-read');
 var request = require('request');
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
 var link = 'http://feeds.feedburner.com/TechCrunch/'
-
+//read up on node's set timeout and setInterval function
 
 app.use(bodyParser.urlencoded({
   extended: false
@@ -285,6 +285,39 @@ function secondSend(recipientId) {
     callSendAPI(messageData);
 };
 
+function thirdSend(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "Looks like you've got a 'BabyMama' scandal. How would you react?",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Deny it",
+                            payload: "deny_scandal"
+                        }, {
+                            type: "postback",
+                            title: "Confirm it",
+                            payload: "confirm_scandal"
+                        },{
+                            type: "postback",
+                            title: "Do nothing",
+                            payload: "scandal_do_nothing"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
+
+
 
 
 
@@ -496,7 +529,7 @@ case 'buy_car':
   secondSend(senderID)
   break;
   case 'party_hard':
-    party(senderID);
+    setTimeout(party(senderID), 5000)
     sendTextMessage(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
     break;
 }
