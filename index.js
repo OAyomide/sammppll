@@ -281,6 +281,7 @@ function firstSend(recipientId) {
             }
         }
     };
+    
     callSendAPI(messageData);
 };
 
@@ -547,11 +548,12 @@ case "help":
   break;
 case 'davido_select':
 setTimeout(function(){
-   davidoSelect(senderID);
-}, 3000);
+    davidoSelect(senderID);
+}, 1000);
+
 setTimeout(function(){
-   firstSend(senderID);
-}, 5000);
+    firstSend(senderID)
+}, 4000)
   break;
 case 'buy_car':
 {
