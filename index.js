@@ -518,7 +518,7 @@ case "help":
   quickButtons(senderID);
   break;
 case 'davido_select':
-  davidoSelect(senderID);
+ setTimeout(davidoSelect(senderID), 5000);
   break;
 case 'buy_car':
 {
