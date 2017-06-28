@@ -550,7 +550,7 @@ case 'davido_select':
     davidoSelect(senderID);
 setTimeout(function(){
     firstSend(senderID)
-}, 1000)
+}, 2000)
   break;
 case 'buy_car':
 {
