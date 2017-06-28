@@ -13,7 +13,7 @@ var fb_page_token = process.env.FB_ACCESS_TOKEN;
 var link = 'http://feeds.feedburner.com/TechCrunch/'
 //read up on node's set timeout and setInterval function
 
-app.use(express.static(__dirname,'public'));
+app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyParser.urlencoded({
   extended: false
 }));
