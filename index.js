@@ -222,7 +222,7 @@ function davidoSelect (recipientId) {
             attachment: {
                 type: "image",
                 payload: {
-                    url: "/images/congrats.gif"
+                    url: "http://i.imgur.com/s9bPVaK.gif"
                 }
             }
         }
@@ -520,10 +520,10 @@ case "help":
   quickButtons(senderID);
   break;
 case 'davido_select':
-    {
+   
         davidoSelect(senderID);
-    }
-    firstSend(senderID);
+   
+    setTimeout((firstSend(senderID)),2000);
   break;
 case 'buy_car':
 {
