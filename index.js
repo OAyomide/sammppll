@@ -549,7 +549,7 @@ case "help":
 case 'davido_select':
 setTimeout(function(){
     davidoSelect(senderID);
-}, 1000);
+}, 500);
 
 setTimeout(function(){
     firstSend(senderID)
