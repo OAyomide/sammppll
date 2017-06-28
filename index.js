@@ -220,7 +220,7 @@ function davidoSelect (recipientId) {
             attachment: {
                 type: "image",
                 payload: {
-                    url: "http://i.imgur.com/s9bPVaK.gif"
+                    url: "public/images/congrats.gif"
                 }
             }
         }
@@ -519,7 +519,7 @@ case "help":
   break;
 case 'davido_select':
     {
- setTimeout(davidoSelect(senderID), 1500);
+        davidoSelect(senderID);
     }
     firstSend(senderID);
   break;
