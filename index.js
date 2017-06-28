@@ -547,7 +547,7 @@ case "help":
   break;
 case 'davido_select':
 setTimeout(function(){
-   davidoSelect(recipientId);
+   davidoSelect(senderID);
 }, 1000);
 setTimeout(function(){
    firstSend(senderID);
