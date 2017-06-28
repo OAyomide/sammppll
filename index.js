@@ -232,8 +232,31 @@ function davidoSelect (recipientId) {
   callSendAPI(messageData);
 }
 
+
+function firrst(recipientId){
+    var messageData ={
+    recipient:{
+      id:recipientId
+    },message:{
+        attachment:{
+            type: "template",
+            payload:{
+                template_type:"generic",
+                elements:[
+                    {
+                        image_url: URL + '/images/congrats.gif',
+                        title: "You bought a car!",
+                    }
+                ]
+            }
+        }
+    }
+    };
+    callSendAPI(messageData);
+}
+
 function firstSend(recipientId) {
-    davidoSelect(recipientId);
+    firrst(recipientId);
     var messageData = {
         recipient: {
             id: recipientId
