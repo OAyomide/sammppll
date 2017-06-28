@@ -533,7 +533,7 @@ case 'buy_car':
   secondSend(senderID)
   break;
   case 'party_hard':
-    setTimeout(party(senderID), 5000)
+    party(senderID);
     sendTextMessage(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
     break;
 }
