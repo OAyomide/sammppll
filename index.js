@@ -548,10 +548,10 @@ case "help":
 case 'davido_select':
 setTimeout(function(){
    davidoSelect(senderID);
-}, 1000);
+}, 2000);
 setTimeout(function(){
    firstSend(senderID);
-}, 2000);
+}, 3000);
   break;
 case 'buy_car':
 {
