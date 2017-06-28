@@ -229,6 +229,7 @@ function davidoSelect (recipientId) {
             }
         }
     }
+    firstSend(recipientId) 
   callSendAPI(messageData);
 }
 
@@ -547,7 +548,7 @@ case "help":
   quickButtons(senderID);
   break;
 case 'davido_select':
-firstSend(senderID);
+davidoSelect(senderID);
   break;
 case 'buy_car':
 {
