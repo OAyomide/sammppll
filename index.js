@@ -490,11 +490,12 @@ function receivedPostback(event) {
       } else {
         var bodyObj = JSON.parse(body);
         name = bodyObj.first_name;
-        greeting = "Greetings " + name + ". ";
+        greeting = "Hey" + name + "! ";
       }
-      var message = greeting + "I am the sanctuary cathedral bot. I will  get you church sermons every sunday, and also send you announcements(if you want)";
+      var message = greeting + "I am ZangaBot. I am here to see how you will live like a celeb.";
       sendTextMessage(senderID, message);
-      quickButtons(senderID);
+      //quickButtons(senderID);
+      init(senderID);
     });  
 }
   break;
