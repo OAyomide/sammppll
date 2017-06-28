@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var schedule = require('node-schedule');
+var path = require('path');
 var app = express();
 var schedule = require('node-schedule');
 var port = process.env.PORT || 9000;
@@ -12,6 +13,7 @@ var fb_page_token = process.env.FB_ACCESS_TOKEN;
 var link = 'http://feeds.feedburner.com/TechCrunch/'
 //read up on node's set timeout and setInterval function
 
+app.use(express.static(__dirname,'public'));
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -220,7 +222,7 @@ function davidoSelect (recipientId) {
             attachment: {
                 type: "image",
                 payload: {
-                    url: "public/images/congrats.gif"
+                    url: "../images/congrats.gif"
                 }
             }
         }
