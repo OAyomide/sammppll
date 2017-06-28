@@ -547,8 +547,11 @@ case "help":
   quickButtons(senderID);
   break;
 case 'davido_select':
-davidoSelect(senderID);
-sendTextMessage(senderID,"ECHOOO!!")
+    davidoSelect(senderID);
+
+setTimeout(function(){
+    firstSend(senderID)
+}, 3000)
   break;
 case 'buy_car':
 {
