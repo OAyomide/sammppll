@@ -13,7 +13,7 @@ var fb_page_token = process.env.FB_ACCESS_TOKEN;
 var link = 'http://feeds.feedburner.com/TechCrunch/'
 //read up on node's set timeout and setInterval function
 
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -222,7 +222,7 @@ function davidoSelect (recipientId) {
             attachment: {
                 type: "image",
                 payload: {
-                    url: "./images/congrats.gif"
+                    url: "/images/congrats.gif"
                 }
             }
         }
