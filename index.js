@@ -522,8 +522,10 @@ case "help":
 case 'davido_select':
    
         davidoSelect(senderID);
-   
-    setTimeout((firstSend(senderID)),2000);
+        var waitTill = new Date(new Date().getTime() + seconds * 2000);
+while(waitTill > new Date()){
+    firstSend(senderID);
+}
   break;
 case 'buy_car':
 {
