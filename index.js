@@ -228,8 +228,7 @@ function davidoSelect (recipientId) {
                 }
             }
         }
-    }
-    firstSend(recipientId) 
+    } 
   callSendAPI(messageData);
 }
 
@@ -549,6 +548,7 @@ case "help":
   break;
 case 'davido_select':
 davidoSelect(senderID);
+sendTextMessage(senderID,"ECHOOO!!")
   break;
 case 'buy_car':
 {
