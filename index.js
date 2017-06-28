@@ -281,7 +281,6 @@ function firstSend(recipientId) {
             }
         }
     };
-       davidoSelect(recipientId);
     callSendAPI(messageData);
 };
 
@@ -547,6 +546,9 @@ case "help":
   quickButtons(senderID);
   break;
 case 'davido_select':
+setTimeout(function(){
+   davidoSelect(recipientId);
+}, 1000);
 setTimeout(function(){
    firstSend(senderID);
 }, 2000);
