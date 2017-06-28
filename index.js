@@ -256,7 +256,7 @@ function firrst(recipientId){
 }
 
 function firstSend(recipientId) {
-    firrst(recipientId);
+    davidoSelect(recipientId);
     var messageData = {
         recipient: {
             id: recipientId
