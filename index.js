@@ -215,6 +215,7 @@ function init (recipientId){
 //to show user selects davido
 
 function davidoSelect (recipientId) {
+    davidoSelect(recipientId);
     var messageData = {
         recipient: {
             id: recipientId
@@ -256,7 +257,7 @@ function firstSend(recipientId) {
             }
         }
     };
-    davidoSelect(recipientId);
+    
     callSendAPI(messageData);
 };
 
