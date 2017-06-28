@@ -9,6 +9,7 @@ var port = process.env.PORT || 9000;
 var verify_token = "sample_verify";
 var feedRead = require('feed-read');
 var request = require('request');
+var URL = process.env.SERVER_URL;
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
 var link = 'http://feeds.feedburner.com/TechCrunch/'
 //read up on node's set timeout and setInterval function
@@ -222,7 +223,7 @@ function davidoSelect (recipientId) {
             attachment: {
                 type: "image",
                 payload: {
-                    url: "http://i.imgur.com/s9bPVaK.gif"
+                    url: URL+"/images/congrats.gif"
                 }
             }
         }
@@ -520,12 +521,8 @@ case "help":
   quickButtons(senderID);
   break;
 case 'davido_select':
-   
-        davidoSelect(senderID);
-        var waitTill = new Date(new Date().getTime() + seconds * 2000);
-while(waitTill > new Date()){
-    firstSend(senderID);
-}
+    davidoSelect(senderID);
+
   break;
 case 'buy_car':
 {
