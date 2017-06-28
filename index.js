@@ -519,7 +519,7 @@ case "help":
   break;
 case 'davido_select':
     {
- davidoSelect(senderID);
+ setTimeout(davidoSelect(senderID), 1500);
     }
     firstSend(senderID);
   break;
