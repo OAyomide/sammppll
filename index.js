@@ -547,13 +547,10 @@ case "help":
   quickButtons(senderID);
   break;
 case 'davido_select':
-
     davidoSelect(senderID);
-
-
 setTimeout(function(){
     firstSend(senderID)
-}, 4000)
+}, 1000)
   break;
 case 'buy_car':
 {
