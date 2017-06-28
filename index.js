@@ -547,9 +547,9 @@ case "help":
   quickButtons(senderID);
   break;
 case 'davido_select':
-setTimeout(function(){
+
     davidoSelect(senderID);
-}, 500);
+
 
 setTimeout(function(){
     firstSend(senderID)
