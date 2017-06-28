@@ -222,7 +222,7 @@ function davidoSelect (recipientId) {
             attachment: {
                 type: "image",
                 payload: {
-                    url: "../images/congrats.gif"
+                    url: "./images/congrats.gif"
                 }
             }
         }
