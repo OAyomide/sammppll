@@ -511,7 +511,7 @@ case "menu":{
 }
 break;
 case "contact":
-  init(senderID);
+   setTimeout(init(senderID), 2000);
   sendTextMessage(recipientId, "Baddest! So let us see if you can live like Davido");
   break;
 case "help":
