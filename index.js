@@ -89,6 +89,8 @@ if (messageText){
     case 'celebs':
       init(senderID);
       break;
+    case '/buy':
+        buyStuffs(senderID);
     case 'sermon':
       sendTextMessage(senderID,"Here is a sermon for you")
       sendAudioMessage(senderID);
@@ -233,28 +235,6 @@ function davidoSelect (recipientId) {
 }
 
 
-function firrst(recipientId){
-    var messageData ={
-    recipient:{
-      id:recipientId
-    },message:{
-        attachment:{
-            type: "template",
-            payload:{
-                template_type:"generic",
-                elements:[
-                    {
-                        image_url: URL + '/images/congrats.gif',
-                        title: "You bought a car!",
-                    }
-                ]
-            }
-        }
-    }
-    };
-    callSendAPI(messageData);
-}
-
 function firstSend(recipientId) {
     davidoSelect(recipientId);
     var messageData = {
@@ -314,6 +294,53 @@ function secondSend(recipientId) {
     callSendAPI(messageData);
 };
 
+
+
+function partyRejected(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "Unfortunately, Meek mill was at the party. You missed a chance to talk to him. Your manager set up another meeting on your behalf.",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Meet Up",
+                            payload: "meet_meek"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
+
+//an attachment showing a recording session/ or hanging out pics of Davido and Meek Mill goes here.
+function davidoHangoutWithMeek(recipientId) {
+    
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "image",
+                payload: {
+                    url: URL+"/images/meekhangout.gif"
+                }
+            }
+        }
+    } 
+  callSendAPI(messageData);
+}
+
+
+
 function thirdSend(recipientId) {
     var messageData = {
         recipient: {
@@ -346,8 +373,130 @@ function thirdSend(recipientId) {
     callSendAPI(messageData);
 };
 
+//we go back to the outcome of the hangout with meek mill. As expected, it means that
+//a track is gon drop
+function thirdSend(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "Finally!! Your collabo with Meek mill was a hit and it won an award.*award emoji goes here* Keep it safe. You will need it",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Accept award",
+                            payload: "award_accept"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
 
+function fourthSend(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "You were approcahed for a manager.",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Go for it",
+                            payload: "collabo_initial_accept"
+                        }, {
+                            type: "postback",
+                            title: "Turn down",
+                            payload: "collabo_initial_reject"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
 
+//here we want the user to buy something for him or herself so we present him or her with an array of stuffs to buy
+function buyStuffs(recipientId, articles){
+    sendTextMessage(recipientId,"Buy yourself any of the below to celebrate your recent success");
+  var messageData ={
+    recipient:{
+      id:recipientId
+    },message:{
+        attachment:{
+            type: "template",
+            payload:{
+                template_type:"generic",
+                elements:[
+                    {
+                        image_url:URL + '/images/car.png',
+                        title: "Buy yourself a Mustang",
+                        subtitle: "Ford GT 2018",
+                        buttons:[{
+                          type: "postback",
+                          payload: "buy_car",
+                          title: "Buy car"
+                        }
+                        ]
+                      },{
+                         image_url:URL+"/images/house.png",
+                        title: "Lekki Mansion",
+                        subtitle: "Buy a Mansion at Lekki",
+                        buttons:[{
+                          type:"postback",
+                          payload: "buy_house",
+                          title: "Buy Mansion"
+                        }
+                        ]
+                      },{
+                         image_url: URL+"/images/jesuspieces.png",
+                        title: "A Jesus piece encrusted with Diamonds",
+                        subtitle: "Customized 18 karat Jesus pieces",
+                        buttons:[{
+                          type:"postback",
+                          payload: "buy_chain",
+                          title: "Buy chain"
+                        }
+                        ]
+                      }, {
+                         image_url: URL+"/images/sneaker.png",
+                        title: "Gold lined OVO sneaker",
+                        subtitle: "Customized 18 karat Jesus pieces",
+                        buttons:[{
+                          type:"postback",
+                          payload: "buy_sneaker",
+                          title: "Buy Sneaker"
+                        }
+                        ]
+                      }, {
+                         image_url: URL+"/images/batmobile.png",
+                        title: "A supercharged batmobile",
+                        subtitle: "specially customized for you.",
+                        buttons:[{
+                          type:"postback",
+                          payload: "buy_mobile",
+                          title: "Buy Batmobile"
+                        }
+                        ]
+                      }
+                ]
+            }
+        }
+    }
+    };
+    callSendAPI(messageData);
+}
 
 
 function carBought(recipientId){
