@@ -97,6 +97,7 @@ if (messageText){
       break;
     case '/buy':
         buyStuffs(senderID);
+        break;
     case 'sermon':
       sendTextMessage(senderID,"Here is a sermon for you")
       sendAudioMessage(senderID);
@@ -381,7 +382,7 @@ function thirdSend(recipientId) {
 
 //we go back to the outcome of the hangout with meek mill. As expected, it means that
 //a track is gon drop
-function thirdSend(recipientId) {
+function sixthSend(recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
@@ -695,7 +696,7 @@ case "menu":{
 }
 break;
 case "contact":
-   setTimeout(init(senderID), 2000);
+   init(senderID);
   sendTextMessage(recipientId, "Baddest! So let us see if you can live like Davido");
   break;
 case "help":
@@ -703,21 +704,17 @@ case "help":
   break;
 case 'davido_select':
     davidoSelect(senderID);
-setTimeout(function(){
     firstSend(senderID)
-}, 2000)
   break;
 case 'buy_car':
-{
   carBought(senderID);
-}{
   sendTextMessage(senderID, 'Nice ride dude!!');
-}
   secondSend(senderID)
   break;
   case 'party_hard':
     party(senderID);
     sendTextMessage(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
+    thirdSend(senderID);
     break;
 }
 
