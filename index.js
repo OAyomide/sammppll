@@ -11,7 +11,13 @@ var feedRead = require('feed-read');
 var request = require('request');
 var URL = process.env.SERVER_URL;
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
-var link = 'http://feeds.feedburner.com/TechCrunch/'
+var link = 'http://feeds.feedburner.com/TechCrunch/';
+var worth = ["30000000000"]
+var newwth = worth[0]-10000000000
+var newewe = worth.push(newwth);
+console.log(worth);
+console.log(newwth);
+console.log(worth);
 //read up on node's set timeout and setInterval function
 
 app.use(express.static('public'));
@@ -440,7 +446,7 @@ function buyStuffs(recipientId, articles){
                 template_type:"generic",
                 elements:[
                     {
-                        image_url:URL + '/images/car.png',
+                        image_url:URL + '/images/mustang.jpg',
                         title: "Buy yourself a Mustang",
                         subtitle: "Ford GT 2018",
                         buttons:[{
@@ -450,7 +456,7 @@ function buyStuffs(recipientId, articles){
                         }
                         ]
                       },{
-                         image_url:URL+"/images/house.png",
+                         image_url:URL+"/images/mansion.jpg",
                         title: "Lekki Mansion",
                         subtitle: "Buy a Mansion at Lekki",
                         buttons:[{
@@ -460,7 +466,7 @@ function buyStuffs(recipientId, articles){
                         }
                         ]
                       },{
-                         image_url: URL+"/images/jesuspieces.png",
+                         image_url: URL+"/images/jesuspieces.jpg",
                         title: "A Jesus piece encrusted with Diamonds",
                         subtitle: "Customized 18 karat Jesus pieces",
                         buttons:[{
@@ -470,7 +476,7 @@ function buyStuffs(recipientId, articles){
                         }
                         ]
                       }, {
-                         image_url: URL+"/images/sneaker.png",
+                         image_url: URL+"/images/sneakers.jpg",
                         title: "Gold lined OVO sneaker",
                         subtitle: "Customized 18 karat Jesus pieces",
                         buttons:[{
@@ -480,7 +486,7 @@ function buyStuffs(recipientId, articles){
                         }
                         ]
                       }, {
-                         image_url: URL+"/images/batmobile.png",
+                         image_url: URL+"/images/batmobile.jpg",
                         title: "A supercharged batmobile",
                         subtitle: "specially customized for you.",
                         buttons:[{
