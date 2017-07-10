@@ -726,16 +726,18 @@ case 'buy_car':
 
 
 function sendTextMessage (recipientId, messageText){
-  var messageData = {
+    new Promise ((resolve, reject) => {
+        var messageData = {
     recipient : {
       id: recipientId
     },
     message:{
       text: messageText
     }
-  };
-  callSendAPI(messageData);
+  }
+    }).then(callSendAPI(messageData))  
 }
+
 
 function download(recipientId){
   var messageData = {
