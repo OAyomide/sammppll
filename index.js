@@ -299,7 +299,7 @@ function secondSend(recipientId) {
         }
     };
     callSendAPI(messageData);
-};
+}
 
 
 
@@ -710,7 +710,7 @@ case 'buy_car':
   carBought(senderID);
   sendTextMessage(senderID, 'Nice ride dude!!');
   secondSend(senderID, function(err, res) {
-      if (res) console.log("It returns")
+      if (res) console.log("IT RETURNS")
   })
   break;
   case 'party_hard':
