@@ -709,7 +709,9 @@ case 'davido_select':
 case 'buy_car':
   carBought(senderID);
   sendTextMessage(senderID, 'Nice ride dude!!');
-  secondSend(senderID)
+  secondSend(senderID, function(err, res) {
+      if (res) console.log("It returns")
+  })
   break;
   case 'party_hard':
     party(senderID);
