@@ -707,11 +707,9 @@ case 'davido_select':
     firstSend(senderID)
   break;
 case 'buy_car':
-  carBought(senderID);
-  sendTextMessage(senderID, 'Nice ride dude!!');
-  secondSend(senderID, function(err, res) {
-      if (res) console.log("IT RETURNS")
-  })
+new Promise(function(resolve, reject) {
+    carBought(senderID)
+}).then(resolve(sendTextMessage(senderID, 'Nice ride dudw')));
   break;
   case 'party_hard':
     party(senderID);
