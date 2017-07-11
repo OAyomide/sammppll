@@ -728,8 +728,14 @@ new Promise(function(resolve, reject) {
         if (!err) {
             party(senderID);
         }
-    }, 2000);
-    thirdSend(senderID);
+    }, 3000);
+
+    setTimeout(function(err, res) {
+        if(!err) {
+            
+        }
+        thirdSend(senderID);
+    }, 5000)
     break;
 }
 
