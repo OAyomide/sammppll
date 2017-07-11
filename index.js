@@ -113,7 +113,7 @@ if (messageText){
         sendAudioMessage(senderID);
         break;
     case '😀':
-        sendTextMessage(senderID,'I like to smile too');
+        sendTextMessage(senderID,'Awesome. You have a denied scandal!');
         break;
     case 'download':
         download(senderID);
@@ -569,86 +569,7 @@ getArticle(function(err, res){
   console.log('Sliced: ', sly);
 });
 
-function sendArticle(recipientId, articles){
-  var messageData ={
-    recipient:{
-      id:recipientId
-    },message:{
-        attachment:{
-            type: "template",
-            payload:{
-                template_type:"generic",
-                elements:[
-                    {
-                        image_url:"http://www.lifefellowship.org/Service-Times-POST.jpg",
-                        title: articles[0].title,
-                        subtitle: articles[0].published.toString().substring(0, 21),
-                        item_url: articles[0].link,
-                        buttons:[{
-                          type:"element_share"
-                        }
-                        ]
-                      },{
-                         image_url: "http://www.lifefellowship.org/Service-Times-POST.jpg",
-                        title: articles[1].title,
-                        subtitle: articles[1].author,
-                        item_url: articles[1].link,
-                        buttons:[{
-                          type:"element_share"
-                        }
-                        ]
-                      },{
-                         image_url: "http://www.lifefellowship.org/Service-Times-POST.jpg",
-                        title: articles[2].title,
-                        subtitle: articles[2].published.toString().substring(0, 21),
-                        item_url: articles[2].link,
-                        buttons:[{
-                          type:"element_share"
-                        }
-                        ]
-                      }
-                ]
-            }
-        }
-    }
-    };
-    callSendAPI(messageData);
-}
 
-
-function sendAudioMessage(recipientId, messageText){
-    var messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            attachment:{
-                type:"audio",
-                payload: {
-                    url: "https://davidabioye.files.wordpress.com/2017/05/14-bishop-david-o-abioye-understanding-the-unlimited-power-of-faith-pt-3a-280517.mp3"
-                }
-            }
-        }
-    }
-    callSendAPI(messageData);
-}
-
-function sendVideoMessage(recipientId, messageText){
-    var messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            attachment:{
-                type:"audio",
-                payload: {
-                    url: "https://davidabioye.files.wordpress.com/2017/05/14-bishop-david-o-abioye-understanding-the-unlimited-power-of-faith-pt-3a-280517.mp3"
-                }
-            }
-        }
-    }
-    callSendAPI(messageData);
-}
 
 function receivedPostback(event) {
   var senderID = event.sender.id;
@@ -696,7 +617,12 @@ case "menu":{
 }
 break;
 case "contact":
-   init(senderID);
+    setTimeout(function(err, res) {
+        if(!res) {
+             init(senderID);
+        }
+    }, 2000)
+  
   sendTextMessage(recipientId, "Baddest! So let us see if you can live like Davido");
   break;
 case "help":
@@ -737,6 +663,11 @@ new Promise(function(resolve, reject) {
         thirdSend(senderID);
     }, 5000)
     break;
+
+    case 'deny_scandal':
+        sendTextMessage(senderID, 'Congrats on your first scandal denial \
+        Send 😀 to claim your achievement 🏆. If you send the wrong one or don\'t, you would lose the trophy but not the \
+        scandal (of course!)');
 }
 
   console.log("Received postback for user %d and page %d with payload '%s' " + 
@@ -759,107 +690,6 @@ function sendTextMessage (recipientId, messageText){
 }
 
 
-function download(recipientId){
-  var messageData = {
-    recipient: {
-      id: recipientId
-    }, message:{
-      attachment:{
-        type: "template",
-        payload:{
-          template_type: "button",
-          text: "Sermon download",
-           buttons:[{
-      type: "web_url",
-      url: "https://davidabioye.files.wordpress.com/2017/05/14-bishop-david-o-abioye-understanding-the-unlimited-power-of-faith-pt-3a-280517.mp3",
-      title: "Download the sermon",
-      webview_height_ratio: "full"
-    }]
-        }
-      }
-    }
-  }
-  callSendAPI(messageData);
-}
-
-function quickButtons(recipientId){
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message:{
-    text:"Quick action",
-    quick_replies:[
-      {
-        content_type:"text",
-        title:"Announcement",
-        payload:"emergency"
-      },
-      {
-        content_type:"text",
-        title:"Download latest sermon",
-        payload:"download"
-      },
-      {
-        content_type:"text",
-        title:"New sermon",
-        payload:"sermon"
-      }
-    ]
-  }
-}
-callSendAPI(messageData);
-}
-
-function contact(recipientId){
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-message:{
-    attachment:{
-      type:"template",
-         payload:{
-            template_type:"list",
-            elements:[
-              {
-                title: "You can contact anybody below for whatever you need",
-                subtitle:"Available contacts",
-                image_url: "http://bloximages.chicago2.vip.townnews.com/tucson.com/content/tncms/assets/v3/editorial/5/ba/5ba33114-c437-50ae-8da2-a5dba111d89f/589e8794f0838.image.jpg",
-              }, {
-                title: "Brother Bayo",
-                subtitle:"Admin. Department",
-                image_url: "https://demovinhasa.files.wordpress.com/2012/06/btrix3.png",
-                buttons:[{
-                  type:"phone_number",
-                  title:"Dial",
-                  payload:"+12345678901"
-                }]
-              },{
-                title:"Pastor Dave",
-                image_url: "https://demovinhasa.files.wordpress.com/2012/06/btrix3.png",
-                subtitle: "Finance department",
-                buttons:[{
-                  type:"phone_number",
-                  title:"Report",
-                  payload:"+12345678901"
-                }]
-              },{
-                title:"Apostle Emma",
-                image_url: "https://demovinhasa.files.wordpress.com/2012/06/btrix3.png",
-                subtitle: "Ushering dept.",
-                buttons:[{
-                  type:"phone_number",
-                  title:"Dial",
-                  payload:"+12345678901"
-              }]},
-            ]
-         }
-    }
-  }
-}
-callSendAPI(messageData);
-}
 
 function callSendAPI (messageData){
   request({
