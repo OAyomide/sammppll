@@ -647,7 +647,7 @@ setTimeout((err, res) => {
             break;
 
             //when the tots is more than one
-            case tots > 1:
+            case 'tots > 1':
             sendTextMessage(senderID, `You now have ${tots} new cars \
             added to your garage`)
             break;
