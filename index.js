@@ -123,6 +123,8 @@ if (messageText){
 }
   else if (messageAttachments) {
     sendTextMessage(senderID, 'I cannot understand images and multimedia yet.')
+  } else if (!messageAttachments === '😀') {
+      sendTextMessage(senderID, 'That seems incorrect')
   }
 }
 
