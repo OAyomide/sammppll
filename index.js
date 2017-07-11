@@ -653,7 +653,7 @@ setTimeout((err, res) => {
             break;
             //when our celeb has more than Five cars, we want to greet him
 
-            case tots >= 5:
+            case tots === 5:
             sendTextMessage(senderID, `Cool!! People be thinkin' you chillin' \
             at the office park with more than ${tots} cars!`);
             break;
