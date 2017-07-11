@@ -10,6 +10,7 @@ var verify_token = "sample_verify";
 var feedRead = require('feed-read');
 var request = require('request');
 var promiseDelay = require('promise-delay');
+var cars = [];
 
 var URL = process.env.SERVER_URL;
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
@@ -516,7 +517,7 @@ function buyStuffs(recipientId, articles){
                         subtitle: "Ford GT 2018",
                         buttons:[{
                           type: "postback",
-                          payload: "buy_car",
+                          payload: "buy_car_extra",
                           title: "Buy car"
                         }
                         ]
@@ -683,6 +684,19 @@ new Promise(function(resolve, reject) {
 }, 6000))
 
   break;
+  case 'buy_car_extra':
+new Promise(function(resolve, reject) {
+    carBought(senderID)
+}).then(setTimeout(function(err, res){
+    if (!err) {
+        sendTextMessage(senderID, "Okey Dokey! Seems you have a taste for exquisite rides. A car 🚗 added to your \
+        garage");
+        var newGarage = cars.length + 1;
+        cars.push(newGarage);
+        console.log(`HE NOW HAS ${cars} car(s)`);
+        secondSend(senderID);
+    }
+}, 6000))
   case 'party_hard':
   sendTextMessage(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
     setTimeout(function(err, res) {
