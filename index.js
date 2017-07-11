@@ -723,8 +723,12 @@ new Promise(function(resolve, reject) {
 
   break;
   case 'party_hard':
-    party(senderID);
-    sendTextMessage(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
+  sendTextMessage(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
+    setTimeout(function(err, res) {
+        if (!err) {
+            party(senderID);
+        }
+    }, 2000);
     thirdSend(senderID);
     break;
 }
