@@ -641,7 +641,11 @@ setTimeout((err, res) => {
         cars.push(newGarage);
         var tots = cars.length
         console.log(`HE NOW HAS ${tots} car(s)`);
-        sendTextMessage(senderID, `You now have ${tots} cars`);
+        if (tots === 1) {
+            sendTextMessage(senderID, `You now have a car`);
+        } else if (tots > 1) {
+            sendTextMessage(senderID, `You now have ${tots} cars`);
+        }
     }
 }, 6000)
 });
