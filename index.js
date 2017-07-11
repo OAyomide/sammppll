@@ -12,14 +12,7 @@ var request = require('request');
 var promiseDelay = require('promise-delay');
 var URL = process.env.SERVER_URL;
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
-var link = 'http://feeds.feedburner.com/TechCrunch/';
-var worth = ["30000000000"]
-var newwth = worth[0]-10000000000
-var newewe = worth.push(newwth);
-console.log(worth);
-console.log(newwth);
-console.log(worth);
-//read up on node's set timeout and setInterval function
+var davidoStuufs = require('./models/dav');
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({
@@ -97,7 +90,7 @@ if (messageText){
       init(senderID);
       break;
     case '/buy':
-        buyStuffs(senderID);
+        davidoStuufs.buyStuff(recipientID)
         break;
     case 'sermon':
       sendTextMessage(senderID,"Here is a sermon for you")
