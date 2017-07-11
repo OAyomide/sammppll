@@ -714,7 +714,7 @@ new Promise(function(resolve, reject) {
     if (!err) {
         sendTextMessage(senderID, "Niiccee")
     }
-}, 1000))
+}, 6000))
 
   break;
   case 'party_hard':
