@@ -711,7 +711,7 @@ case 'buy_car':
 var eventually = promiseDelay(1000, Promise.resolve(sendTextMessage(senderID,"NiceRide")))
 new Promise(function(resolve, reject) {
     carBought(senderID)
-}).then(setTimeout(eventually, 1000));
+}).then(eventually)
   break;
   case 'party_hard':
     party(senderID);
