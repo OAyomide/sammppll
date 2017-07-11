@@ -716,7 +716,8 @@ new Promise(function(resolve, reject) {
     carBought(senderID)
 }).then(setTimeout(function(err, res){
     if (!err) {
-        sendTextMessage(senderID, "Niiccee")
+        sendTextMessage(senderID, "Niiccee");
+        secondSend(senderID);
     }
 }, 6000))
 
