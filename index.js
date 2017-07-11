@@ -641,10 +641,22 @@ setTimeout((err, res) => {
         cars.push(newGarage);
         var tots = cars.length
         console.log(`HE NOW HAS ${tots} car(s)`);
-        if (tots === 1) {
-            sendTextMessage(senderID, `You now have a car`);
-        } else if (tots > 1) {
-            sendTextMessage(senderID, `You now have ${tots} cars`);
+        switch (tots){
+            case 1:
+            sendTextMessage(senderID,`You have one new car!`)
+            break;
+
+            //when the tots is more than one
+            case tots > 1:
+            sendTextMessage(senderID, `You now have ${tots} new cars \
+            added to your garage`)
+            break;
+            //when our celeb has more than Five cars, we want to greet him
+
+            case tots >= 5:
+            sendTextMessage(senderID, `Cool!! People be thinkin' you chillin' \
+            at the office park with more than ${tots} cars!`);
+            break;
         }
     }
 }, 6000)
