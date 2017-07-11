@@ -704,8 +704,13 @@ case "help":
   quickButtons(senderID);
   break;
 case 'davido_select':
+
     davidoSelect(senderID);
-    firstSend(senderID)
+    setTimeout(function(err, res) {
+        if (!err) {
+            firstSend(senderID)
+        }
+    }, 6000)
   break;
 case 'buy_car':
 new Promise(function(resolve, reject) {
