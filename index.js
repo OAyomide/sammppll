@@ -709,7 +709,7 @@ case 'davido_select':
   break;
 case 'buy_car':
 new Promise(function(resolve, reject) {
-}).then(party(senderID)).then(sendTextMessage(senderID, "Nice"))
+}).then(carBought(senderID)).then(sendTextMessage(senderID, "Nice"))
   break;
   case 'party_hard':
     party(senderID);
