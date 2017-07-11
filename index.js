@@ -655,7 +655,6 @@ setTimeout((err, res) => {
             else if (tots >=5 )
             sendTextMessage(senderID, `Cool!! People be thinkin' you chillin' \
             at the office park with more than ${tots} cars!`);
-            break;
         
     }
 }, 6000)
