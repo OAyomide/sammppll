@@ -647,15 +647,10 @@ setTimeout((err, res) => {
             }
 
             //when the tots is more than one
-            else if (tots > 1) {
+            else if (tots >= 5) {
                  sendTextMessage(senderID, `Cool!! People be thinkin' you chillin' \
             at the office park with more than ${tots} cars!`);
-            }
-            //when our celeb has more than Five cars, we want to greet him
-            else if (tots === 2 ) {
-                sendTextMessage(senderID, `Cool!! cars!`);
-            }
-            
+            }    
         
     }
 }, 6000)
