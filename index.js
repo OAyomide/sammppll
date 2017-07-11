@@ -91,7 +91,7 @@ if (messageText){
       init(senderID);
       break;
     case '/buy':
-        davidoStuufs.buyStuff(recipientID)
+        buyStuffs(senderID);
         break;
     case 'sermon':
       sendTextMessage(senderID,"Here is a sermon for you")
