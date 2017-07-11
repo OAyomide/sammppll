@@ -1,5 +1,8 @@
+
+var core_2 = require('./corefunct');
+
  exports.buyStuff = function buyStuffs(recipientId){
-    sendTextMessage(recipientId,"Buy yourself any of the below to celebrate your recent success");
+   core_2.sendText(recipientId,"Buy yourself any of the below to celebrate your recent success");
   var messageData ={
     recipient:{
       id:recipientId

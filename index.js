@@ -10,6 +10,7 @@ var verify_token = "sample_verify";
 var feedRead = require('feed-read');
 var request = require('request');
 var promiseDelay = require('promise-delay');
+var core_2 = require('./models/corefunct');
 var URL = process.env.SERVER_URL;
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
 var davidoStuufs = require('./models/dav');
@@ -93,7 +94,7 @@ if (messageText){
         davidoStuufs.buyStuff(recipientID)
         break;
     case 'sermon':
-      sendTextMessage(senderID,"Here is a sermon for you")
+      core_2.sendText(senderID,"Here is a sermon for you")
       sendAudioMessage(senderID);
       break;
     case 'banner':
@@ -106,7 +107,7 @@ if (messageText){
         sendAudioMessage(senderID);
         break;
     case '😀':
-        sendTextMessage(senderID,'Awesome. You have a denied scandal!');
+        core_2.sendText(senderID,'Awesome. You have a denied scandal!');
         break;
     case 'download':
         download(senderID);
@@ -117,11 +118,11 @@ if (messageText){
           });
           break;
     default:
-      sendTextMessage(senderID, "I don't seem to understand yet");
+      core_2.sendText(senderID, "I don't seem to understand yet");
   }
 }
   else if (messageAttachments) {
-    sendTextMessage(senderID, 'I cannot understand images and multimedia yet.')
+    core_2.sendText(senderID, 'I cannot understand images and multimedia yet.')
   }
 }
 
@@ -429,7 +430,7 @@ function fourthSend(recipientId) {
 
 //here we want the user to buy something for him or herself so we present him or her with an array of stuffs to buy
 function buyStuffs(recipientId, articles){
-    sendTextMessage(recipientId,"Buy yourself any of the below to celebrate your recent success");
+    core_2.sendText(recipientId,"Buy yourself any of the below to celebrate your recent success");
   var messageData ={
     recipient:{
       id:recipientId
@@ -563,7 +564,7 @@ function receivedPostback(event) {
         greeting = "Hey " + name + "! ";
       }
       var message = greeting + "I am ZangaBot. I am here to see how you will live like a celeb.";
-      sendTextMessage(senderID, message);
+      core_2.sendText(senderID, message);
       //quickButtons(senderID);
       init(senderID);
     });  
@@ -571,7 +572,7 @@ function receivedPostback(event) {
   break;
 case "sermon":
   {
-  sendTextMessage(senderID,"Here is the latest audio sermon");
+  core_2.sendText(senderID,"Here is the latest audio sermon");
   sendAudioMessage(senderID);
 }
 break;
@@ -587,7 +588,7 @@ case "contact":
         }
     }, 2000)
   
-  sendTextMessage(recipientId, "Baddest! So let us see if you can live like Davido");
+  core_2.sendText(recipientId, "Baddest! So let us see if you can live like Davido");
   break;
 case "help":
   quickButtons(senderID);
@@ -606,14 +607,14 @@ new Promise(function(resolve, reject) {
     carBought(senderID)
 }).then(setTimeout(function(err, res){
     if (!err) {
-        sendTextMessage(senderID, "Niiccee");
+        core_2.sendText(senderID, "Niiccee");
         secondSend(senderID);
     }
 }, 6000))
 
   break;
   case 'party_hard':
-  sendTextMessage(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
+  core_2.sendText(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
     setTimeout(function(err, res) {
         if (!err) {
             party(senderID);
@@ -629,7 +630,7 @@ new Promise(function(resolve, reject) {
     break;
 
     case 'deny_scandal':
-        sendTextMessage(senderID, 'Congrats on your first scandal denial \
+        core_2.sendText(senderID, 'Congrats on your first scandal denial \
         Send 😀 to claim your achievement 🏆. If you send the wrong one or don\'t, you would lose the trophy but not the \
         scandal (of course!)');
 }
@@ -641,17 +642,7 @@ new Promise(function(resolve, reject) {
 
 
 
-function sendTextMessage (recipientId, messageText){
-  var messageData = {
-    recipient : {
-      id: recipientId
-    },
-    message:{
-      text: messageText
-    }
-  };
-  callSendAPI(messageData);
-}
+
 
 
 
