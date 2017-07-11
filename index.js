@@ -652,7 +652,7 @@ setTimeout((err, res) => {
             added to your garage`)
             }
             //when our celeb has more than Five cars, we want to greet him
-            else if (tots > 5 )
+            else if (tots === 5 )
             sendTextMessage(senderID, `Cool!! People be thinkin' you chillin' \
             at the office park with more than ${tots} cars!`);
         
