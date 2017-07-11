@@ -710,8 +710,8 @@ case 'buy_car':
 new Promise(function(resolve, reject) {
     carBought(senderID)
 }).then(setTimeout(function(){
-    resolve(sendTextMessage(senderID, 'Nice ride!'))
-}, 1000));
+    sendTextMessage(senderID, 'Nice ride!')
+}, 1000)).catch(reject());
   break;
   case 'party_hard':
     party(senderID);
@@ -723,6 +723,8 @@ new Promise(function(resolve, reject) {
   console.log("Received postback for user %d and page %d with payload '%s' " + 
     "at %d", senderID, recipientID, payload, timeOfPostback);
 }
+
+
 
 
 function sendTextMessage (recipientId, messageText){
