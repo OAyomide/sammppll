@@ -685,19 +685,36 @@ new Promise(function(resolve, reject) {
 
   break;
   case 'buy_car_extra':
-new Promise(function(resolve, reject) {
-    carBought(senderID)
-}).then(setTimeout(function(err, res){
-    if (!err) {
-        sendTextMessage(senderID, "Okey Dokey! Seems you have a taste for exquisite rides. A car 🚗 added to your \
+new Promise((resolve, reject)=> {
+//     setTimeout(function(err, res){
+//     if (!err) {
+//         sendTextMessage(senderID, "Okey Dokey! Seems you have a taste for exquisite rides. A car 🚗 added to your \
+//         garage");
+//         var newGarage = cars.length + 1;
+//         cars.push(newGarage);
+//         var tots = cars.length
+//         console.log(`HE NOW HAS ${tots} car(s)`);
+//         secondSend(senderID);
+//     }
+// }, 6000)
+
+
+
+setTimeout((err, res) => {
+    if(err) {
+        console.log('Timeout setting error');
+    }
+    else if (!err) {
+         sendTextMessage(senderID, "Okey Dokey! Seems you have a taste for exquisite rides. A car 🚗 added to your \
         garage");
         var newGarage = cars.length + 1;
         cars.push(newGarage);
         var tots = cars.length
         console.log(`HE NOW HAS ${tots} car(s)`);
-        secondSend(senderID);
+        sendTextMessage(senderID, `You now have ${tots} cars`);
     }
-}, 6000))
+}, 6000)
+})
   case 'party_hard':
   sendTextMessage(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
     setTimeout(function(err, res) {
