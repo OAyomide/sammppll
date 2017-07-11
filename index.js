@@ -708,10 +708,10 @@ case 'davido_select':
     firstSend(senderID)
   break;
 case 'buy_car':
-var eventually = promiseDelay(1000, Promise.resolve(sendTextMessage(senderID,"NiceRide")))
+
 new Promise(function(resolve, reject) {
-    carBought(senderID)
-}).then(eventually)
+    var eventually = promiseDelay(1000, Promise.resolve(sendTextMessage(senderID,"NiceRide")))
+}).then(carBought(senderID))
   break;
   case 'party_hard':
     party(senderID);
