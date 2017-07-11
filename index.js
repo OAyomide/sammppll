@@ -161,7 +161,7 @@ function  sendChurch(recipientId){
         }
     }
     };
-    callSendAPI(messageData);
+    core_2.callSend(messageData);
 }
 
 //we want to init our first selection from our user
@@ -212,7 +212,7 @@ function init (recipientId){
             }
         }
     };
-   callSendAPI(messageData);
+   core_2.callSend(messageData);
 }
 
 
@@ -233,7 +233,7 @@ function davidoSelect (recipientId) {
             }
         }
     } 
-  callSendAPI(messageData);
+  core_2.callSend(messageData);
 }
 
 
@@ -263,7 +263,7 @@ function firstSend(recipientId) {
         }
     };
     
-    callSendAPI(messageData);
+    core_2.callSend(messageData);
 };
 
 
@@ -292,7 +292,7 @@ function secondSend(recipientId) {
             }
         }
     };
-    callSendAPI(messageData);
+    core_2.callSend(messageData);
 }
 
 
@@ -318,7 +318,7 @@ function partyRejected(recipientId) {
             }
         }
     };
-    callSendAPI(messageData);
+    core_2.callSend(messageData);
 };
 
 //an attachment showing a recording session/ or hanging out pics of Davido and Meek Mill goes here.
@@ -337,7 +337,7 @@ function davidoHangoutWithMeek(recipientId) {
             }
         }
     } 
-  callSendAPI(messageData);
+  core_2.callSend(messageData);
 }
 
 
@@ -371,7 +371,7 @@ function thirdSend(recipientId) {
             }
         }
     };
-    callSendAPI(messageData);
+    core_2.callSend(messageData);
 };
 
 //we go back to the outcome of the hangout with meek mill. As expected, it means that
@@ -397,7 +397,7 @@ function sixthSend(recipientId) {
             }
         }
     };
-    callSendAPI(messageData);
+    core_2.callSend(messageData);
 };
 
 function fourthSend(recipientId) {
@@ -425,7 +425,7 @@ function fourthSend(recipientId) {
             }
         }
     };
-    callSendAPI(messageData);
+    core_2.callSend(messageData);
 };
 
 //here we want the user to buy something for him or herself so we present him or her with an array of stuffs to buy
@@ -496,7 +496,7 @@ function buyStuffs(recipientId, articles){
         }
     }
     };
-    callSendAPI(messageData);
+    core_2.callSend(messageData);
 }
 
 
@@ -514,7 +514,7 @@ function carBought(recipientId){
             }
         }
     }
-    callSendAPI(messageData);
+    core_2.callSend(messageData);
 }
 
 function party(recipientId){
@@ -531,7 +531,7 @@ function party(recipientId){
             }
         }
     }
-    callSendAPI(messageData);
+    core_2.callSend(messageData);
 }
 
 
@@ -646,27 +646,27 @@ new Promise(function(resolve, reject) {
 
 
 
-function callSendAPI (messageData){
-  request({
-    uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {
-      access_token: fb_page_token
-    },
-    method: 'POST',
-    json: messageData
-  }, function(error, response, body){
-    if (!error && response.statusCode == 200) {
-      var recipientId = body.recipient_id;
-      var messageId = body.message_id;
-      console.log('Successfully sent generic message with id %s to recipient %s', messageId, recipientId);
-    }
-    else {
-      console.error('Unable to send message.');
-      console.error(response);
-      console.error(error);
-    }
-  });
-}
+// function callSendAPI (messageData){
+//   request({
+//     uri: 'https://graph.facebook.com/v2.6/me/messages',
+//     qs: {
+//       access_token: fb_page_token
+//     },
+//     method: 'POST',
+//     json: messageData
+//   }, function(error, response, body){
+//     if (!error && response.statusCode == 200) {
+//       var recipientId = body.recipient_id;
+//       var messageId = body.message_id;
+//       console.log('Successfully sent generic message with id %s to recipient %s', messageId, recipientId);
+//     }
+//     else {
+//       console.error('Unable to send message.');
+//       console.error(response);
+//       console.error(error);
+//     }
+//   });
+// }
 
 //we want to subscribe the user to receive the notification. For user ids that exist in the db, send them subscriptions
 //read request npm
