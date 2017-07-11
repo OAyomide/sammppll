@@ -693,7 +693,8 @@ new Promise(function(resolve, reject) {
         garage");
         var newGarage = cars.length + 1;
         cars.push(newGarage);
-        console.log(`HE NOW HAS ${cars} car(s)`);
+        var tots = cars.length
+        console.log(`HE NOW HAS ${tots} car(s)`);
         secondSend(senderID);
     }
 }, 6000))
