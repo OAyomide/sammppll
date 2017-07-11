@@ -94,30 +94,9 @@ if (messageText){
     case '/buy':
         buyStuffs(senderID);
         break;
-    case 'sermon':
-      sendTextMessage(senderID,"Here is a sermon for you")
-      sendAudioMessage(senderID);
-      break;
-    case 'banner':
-      sendChurch(senderID);
-      break;
-    case 'video':
-        sendVideoMessage(senderID);
-        break;
-    case 'New sermon':
-        sendAudioMessage(senderID);
-        break;
     case '😀':
         sendTextMessage(senderID,'Awesome. You have a denied scandal!');
         break;
-    case 'download':
-        download(senderID);
-        break;
-        case 'article':
-          getArticle(function(err, res){
-            sendArticle(senderID, res);
-          });
-          break;
     default:
       sendTextMessage(senderID, "I don't seem to understand yet");
   }
@@ -198,42 +177,6 @@ function buyStuffs(recipientId){
     callSendAPI(messageData);
 }
 
-
-
-function  sendChurch(recipientId){
-  var messageData ={
-    recipient:{
-      id:recipientId
-    },message:{
-        attachment:{
-            type: "template",
-            payload:{
-                template_type:"generic",
-                elements:[
-                    {
-                        image_url: "http://bloximages.chicago2.vip.townnews.com/tucson.com/content/tncms/assets/v3/editorial/5/ba/5ba33114-c437-50ae-8da2-a5dba111d89f/589e8794f0838.image.jpg?resize=1200%2C846",
-                        title: "New sermon of the week",
-                        subtitle: "Sunday 14 March 2017",
-                        buttons:[{
-                          type:"element_share"
-                        }
-                        ]
-                    },{
-                      image_url: "http://www.lifefellowship.org/Service-Times-POST.jpg",
-                        title: "Announcement",
-                        subtitle: "Sunday 14 March 2017",
-                        buttons:[{
-                          type:"element_share"
-                        }
-                        ]
-                    }
-                ]
-            }
-        }
-    }
-    };
-    callSendAPI(messageData);
-}
 
 //we want to init our first selection from our user
 function init (recipientId){
@@ -686,19 +629,6 @@ new Promise(function(resolve, reject) {
   break;
   case 'buy_car_extra':
 new Promise((resolve, reject)=> {
-//     setTimeout(function(err, res){
-//     if (!err) {
-//         sendTextMessage(senderID, "Okey Dokey! Seems you have a taste for exquisite rides. A car 🚗 added to your \
-//         garage");
-//         var newGarage = cars.length + 1;
-//         cars.push(newGarage);
-//         var tots = cars.length
-//         console.log(`HE NOW HAS ${tots} car(s)`);
-//         secondSend(senderID);
-//     }
-// }, 6000)
-
-
 
 setTimeout((err, res) => {
     if(err) {
@@ -714,7 +644,8 @@ setTimeout((err, res) => {
         sendTextMessage(senderID, `You now have ${tots} cars`);
     }
 }, 6000)
-})
+});
+break;
   case 'party_hard':
   sendTextMessage(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
     setTimeout(function(err, res) {
