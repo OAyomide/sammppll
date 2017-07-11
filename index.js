@@ -682,6 +682,10 @@ break;
         sendTextMessage(senderID, 'Congrats on your first scandal denial \
         Send 😀 to claim your achievement 🏆. If you send the wrong one or don\'t, you would lose the trophy but not the \
         scandal (of course!)');
+        break;
+
+    case 'emergency':
+        sendTextMessage(senderID, 'Quick reply callback payload')
 }
 
   console.log("Received postback for user %d and page %d with payload '%s' " + 
