@@ -685,6 +685,35 @@ function sendTextMessage (recipientId, messageText){
 }
 
 
+function quickButtons(recipientId){
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message:{
+    text:"Quick action",
+    quick_replies:[
+      {
+        content_type:"text",
+        title:"Announcement",
+        payload:"emergency"
+      },
+      {
+        content_type:"text",
+        title:"Download latest sermon",
+        payload:"download"
+      },
+      {
+        content_type:"text",
+        title:"New sermon",
+        payload:"sermon"
+      }
+    ]
+  }
+}
+callSendAPI(messageData);
+}
+
 
 
 
