@@ -535,35 +535,6 @@ function party(recipientId){
 
 
 
-
-
-
-
-
-function getArticle(callback) {
-    feedRead(link, function(err, articles){
-        if (err){
-            callback(err);
-        }
-        else{
-               callback(null, articles)
-               console.log("The shit works: ")
-        }
-    });
-
-}
-
-
-
-getArticle(function(err, res){
-  if(err) console.log("We have a problem");
-  console.log("Here is the stuffs: ", res[1].content)
-  var sly = res[1].content.slice(212, 112);
-  console.log('Sliced: ', sly);
-});
-
-
-
 function receivedPostback(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
