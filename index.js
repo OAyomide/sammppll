@@ -711,7 +711,7 @@ new Promise(function(resolve, reject) {
     carBought(senderID)
 }).then(setTimeout(function(){
     sendTextMessage(senderID, 'Nice ride!')
-}, 1000)).catch(reject());
+}, 500)).catch(reject());
   break;
   case 'party_hard':
     party(senderID);
