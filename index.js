@@ -710,7 +710,7 @@ case 'davido_select':
 case 'buy_car':
 
 new Promise(function(resolve, reject) {
-}).then(setTimeout(carBought(senderID), 3000)).then(eventually = promiseDelay(5000, Promise.resolve(sendTextMessage(senderID,"NiceRide"))))
+}).then(setTimeout(carBought(senderID), 500)).then(eventually = promiseDelay(5000, Promise.resolve(sendTextMessage(senderID,"NiceRide"))))
   break;
   case 'party_hard':
     party(senderID);
