@@ -9,6 +9,7 @@ var port = process.env.PORT || 9000;
 var verify_token = "sample_verify";
 var feedRead = require('feed-read');
 var request = require('request');
+var promiseDelay = require('promise-delay');
 var URL = process.env.SERVER_URL;
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
 var link = 'http://feeds.feedburner.com/TechCrunch/';
@@ -707,11 +708,10 @@ case 'davido_select':
     firstSend(senderID)
   break;
 case 'buy_car':
+var eventually = promiseDelay(1000, Promise.resolve(sendTextMessage(senderID,"NiceRide")))
 new Promise(function(resolve, reject) {
     carBought(senderID)
-}).then(setTimeout(function(){
-    sendTextMessage(senderID, 'Nice ride!')
-}, 500)).catch(reject());
+}).then(eventually);
   break;
   case 'party_hard':
     party(senderID);
