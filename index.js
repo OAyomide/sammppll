@@ -15,6 +15,7 @@ var coreFunct = require('./models/corefunct');
 var stuff = require('./models/stuffs');
 var davidoStuffs = require('./models/dav');
 var prompts = require('./models/prompts');
+var gifs = require('./models/gifs');
 var recastai = require('recastai');
 var cars = [];
 
@@ -408,75 +409,6 @@ function fourthSend(recipientId) {
 
 
 //here we want the user to buy something for him or herself so we present him or her with an array of stuffs to buy
-function buyStuffs(recipientId, articles){
-    coreFunct.sendText(recipientId,"Buy yourself any of the below to celebrate your recent success");
-  var messageData ={
-    recipient:{
-      id:recipientId
-    },message:{
-        attachment:{
-            type: "template",
-            payload:{
-                template_type:"generic",
-                elements:[
-                    {
-                        image_url:URL + '/images/mustang.jpg',
-                        title: "Buy yourself a Mustang",
-                        subtitle: "Ford GT 2018",
-                        buttons:[{
-                          type: "postback",
-                          payload: "buy_car_extra",
-                          title: "Buy car"
-                        }
-                        ]
-                      },{
-                         image_url:URL+"/images/mansion.jpg",
-                        title: "Lekki Mansion",
-                        subtitle: "Buy a Mansion at Lekki",
-                        buttons:[{
-                          type:"postback",
-                          payload: "buy_house",
-                          title: "Buy Mansion"
-                        }
-                        ]
-                      },{
-                         image_url: URL+"/images/jesuspieces.jpg",
-                        title: "A Jesus piece encrusted with Diamonds",
-                        subtitle: "Customized 18 karat Jesus pieces",
-                        buttons:[{
-                          type:"postback",
-                          payload: "buy_chain",
-                          title: "Buy chain"
-                        }
-                        ]
-                      }, {
-                         image_url: URL+"/images/sneakers.jpg",
-                        title: "Gold lined OVO sneaker",
-                        subtitle: "Customized 18 karat Jesus pieces",
-                        buttons:[{
-                          type:"postback",
-                          payload: "buy_sneaker",
-                          title: "Buy Sneaker"
-                        }
-                        ]
-                      }, {
-                         image_url: URL+"/images/batmobile.jpg",
-                        title: "A supercharged batmobile",
-                        subtitle: "specially customized for you.",
-                        buttons:[{
-                          type:"postback",
-                          payload: "buy_mobile",
-                          title: "Buy Batmobile"
-                        }
-                        ]
-                      }
-                ]
-            }
-        }
-    }
-    };
-    callSendAPI(messageData);
-}
 
 
 function carBought(recipientId){
@@ -583,7 +515,7 @@ case 'davido_select':
   break;
 case 'buy_car':
 new Promise(function(resolve, reject) {
-    carBought(senderID)
+    gifs.carBought(senderID);
 }).then(setTimeout(function(err, res){
     if (!err) {
         coreFunct.sendText(senderID, "Niiccee");
