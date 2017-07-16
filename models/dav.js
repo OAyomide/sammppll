@@ -1,6 +1,6 @@
-
+var request = require('request');
+var fb_page_token = process.env.FB_ACCESS_TOKEN;
 var core_2 = require('./corefunct');
-
  exports.buyStuff = function buyStuffs(recipientId){
    core_2.sendText(recipientId,"Buy yourself any of the below to celebrate your recent success");
   var messageData ={
@@ -69,4 +69,29 @@ var core_2 = require('./corefunct');
     }
     };
     callSendAPI(messageData);
+}
+
+
+
+
+function callSendAPI (messageData){
+  request({
+    uri: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {
+      access_token: fb_page_token
+    },
+    method: 'POST',
+    json: messageData
+  }, function(error, response, body){
+    if (!error && response.statusCode == 200) {
+      var recipientId = body.recipient_id;
+      var messageId = body.message_id;
+      console.log('Successfully sent generic message with id %s to recipient %s', messageId, recipientId);
+    }
+    else {
+      console.error('Unable to send message.');
+      console.error(response);
+      console.error(error);
+    }
+  });
 }
