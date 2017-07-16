@@ -264,9 +264,17 @@ case 'buy_jewelry':
         } else if (!err) {
              gifs.davidoHangoutWithMeekMill(senderID)
         }
-    }, 3000);
+    }, 6000);
     coreFunct.sendText(senderID, 'That was from your music video!');
-    coreFunct.sendText(senderID, 'At this juncture, you have to tweet this! Because it is awesome!');
+    setTimeout((err, res) => {
+        if (err) {
+            coreFunct.sendText(senderID, "Oh No!! Try again!");
+
+        }
+        else if (!err) {
+             coreFunct.sendText(senderID, 'At this juncture, you have to tweet this! Because it is awesome!');
+        }
+    }, 7000);
         break;
        
     case 'deny_scandal':
