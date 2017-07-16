@@ -1,5 +1,6 @@
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
-var URL = process.env.SERVER_URL
+var URL = process.env.SERVER_URL;
+var request = require('request');
 exports.init = function init (recipientId){
     var messageData = {
         recipient: {
