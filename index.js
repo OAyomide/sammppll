@@ -255,7 +255,7 @@ case 'buy_jewelry':
 
     case 'reject_party':
         prompts.partyRejected(senderID);
-
+        break;
     case 'deny_scandal':
         coreFunct.sendText(senderID, 'Congrats on your first scandal denial \
         Send 😀 to claim your achievement 🏆. If you send the wrong one or don\'t send any, you are going lose the trophy but not the \
