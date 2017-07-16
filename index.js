@@ -92,6 +92,8 @@ request.analyseText(messageText).then(function(res){
     //we want to handle the logic of our text to see the intent and act
     if (intent.slug === 'greetings') {
         sendTextMessage(senderID, 'Hi to you.')
+    } else if (intent.slug === 'laught') {
+        sendTextMessage(senderID, 'I know right?');
     }
 })
 
