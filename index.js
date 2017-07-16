@@ -83,6 +83,8 @@ function receivedMessage(event){
 //           });
 // });
 
+
+
 if (messageText){
   switch (messageText) {
     case 'menu':
@@ -97,6 +99,8 @@ if (messageText){
     case '😀':
         sendTextMessage(senderID,'Awesome. You have a denied scandal!');
         break;
+    case '/tweet-status':
+        tweetStatus(senderID);
     default:
       sendTextMessage(senderID, "I don't seem to understand yet");
   }
@@ -104,8 +108,25 @@ if (messageText){
    else if (!messageAttachments === '😀') {
       sendTextMessage(senderID, 'That seems incorrect')
   }
+  else if (messageText.charAt('0') === '@'){
+      sendTextMessage(senderID, `Your tweet, ${messageText} has been posted. Send /tweet-status to see reactions`)
+}
 }
 
+
+function tweetStatus(recipientId) {
+    var responseArray = [
+        'Not so good',
+        'Fair',
+        'Looking good',
+        'A lot of criticism',
+        'People loved it!',
+        'Tons of retweets',
+    ];
+
+    var response = Math.floor(Math.random()* (responseArray.length));
+    sendTextMessage(recipientId, responseArray[response]);
+}
 
 function buyStuffs(recipientId){
    sendTextMessage(recipientId,"Buy yourself any of the below to celebrate your recent success");
@@ -260,7 +281,7 @@ function firstSend(recipientId) {
                 type: "template",
                 payload: {
                     template_type: "button",
-                    text: "You have N30,000,000,000 in your account. What will you buy?",
+                    text: "Lets get you started with some gears. What will you buy?",
                     buttons: [
                         {
                             type: "postback",
@@ -279,6 +300,28 @@ function firstSend(recipientId) {
     
     callSendAPI(messageData);
 };
+
+function jewelryBought(recipientId) {
+        var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "image",
+                payload: {
+                    url: URL+"/images/jesuspieces.jpg"
+                }
+            }
+        }
+    } 
+  callSendAPI(messageData);
+}
+
+
+
+
+
 
 
 function secondSend(recipientId) {
@@ -388,31 +431,22 @@ function thirdSend(recipientId) {
     callSendAPI(messageData);
 };
 
-//we go back to the outcome of the hangout with meek mill. As expected, it means that
-//a track is gon drop
-function sixthSend(recipientId) {
+function confirmScandalGif(recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
-        }, message: {
+        },
+        message: {
             attachment: {
-                type: "template",
+                type: "image",
                 payload: {
-                    template_type: "button",
-                    text: "Finally!! Your collabo with Meek mill was a hit and it won an award.*award emoji goes here* Keep it safe. You will need it",
-                    buttons: [
-                        {
-                            type: "postback",
-                            title: "Accept award",
-                            payload: "award_accept"
-                        }
-                    ]
+                    url: URL+"/images/surprise.gif"
                 }
             }
         }
-    };
-    callSendAPI(messageData);
-};
+    }
+  callSendAPI(messageData);
+}
 
 function fourthSend(recipientId) {
     var messageData = {
@@ -423,7 +457,7 @@ function fourthSend(recipientId) {
                 type: "template",
                 payload: {
                     template_type: "button",
-                    text: "You were approcahed for a manager.",
+                    text: "You were approcahed for a collaboration by an upcoming artiste's manager.",
                     buttons: [
                         {
                             type: "postback",
@@ -441,6 +475,8 @@ function fourthSend(recipientId) {
     };
     callSendAPI(messageData);
 };
+
+
 
 //here we want the user to buy something for him or herself so we present him or her with an array of stuffs to buy
 function buyStuffs(recipientId, articles){
@@ -635,7 +671,7 @@ setTimeout((err, res) => {
         console.log('Timeout setting error');
     }
     else if (!err) {
-         sendTextMessage(senderID, "Okey Dokey! Seems you have a taste for exquisite rides. A car 🚗 added to your \
+         sendTextMessage(senderID, "Okey Dokey! Seems you have a taste for exquisite rides. A car 🚗 has been added to your \
         garage");
         var newGarage = cars.length + 1;
         cars.push(newGarage);
@@ -647,9 +683,9 @@ setTimeout((err, res) => {
             }
 
             //when the tots is more than one
-            else if (tots >= 5) {
+            else if (tots === 5) {
                  sendTextMessage(senderID, `Cool!! People be thinkin' you chillin' \
-            at the office park with more than ${tots} cars!`);
+                 at the office park with more than ${tots} cars!`);
             }    
         
     }
@@ -674,12 +710,29 @@ break;
 
     case 'deny_scandal':
         sendTextMessage(senderID, 'Congrats on your first scandal denial \
-        Send 😀 to claim your achievement 🏆. If you send the wrong one or don\'t, you would lose the trophy but not the \
+        Send 😀 to claim your achievement 🏆. If you send the wrong one or don\'t send any, you are going lose the trophy but not the \
         scandal (of course!)');
         break;
 
     case 'emergency':
         sendTextMessage(senderID, 'Quick reply callback payload')
+        break;
+
+
+    case 'do_nothing':
+        fourthSend(senderID);
+        break;
+
+
+    case 'collabo_initial_accept':
+        sendTextMessage(senderID,'That didn\'t turn out well! But you have another artiste owe you!');
+        sendTextMessage(senderID, 'Send 😎😎😎 to continue');
+        break;
+    
+    case 'collabo_initial_reject':
+        sendTextMessage(senderID, 'If you heard that your album was burnt due to low quality, what are you going to tweet');
+        sendTextMessage(senderID, 'type: @tweet- befor you type your tweet so I can understand you are tweeting');
+        break;
 }
 
   console.log("Received postback for user %d and page %d with payload '%s' " + 
