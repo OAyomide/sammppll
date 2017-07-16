@@ -10,6 +10,7 @@ var verify_token = "sample_verify";
 var feedRead = require('feed-read');
 var request = require('request');
 var promiseDelay = require('promise-delay');
+var randomFuncts = require('./models/funcs')
 var recastai = require('recastai');
 var cars = [];
 
@@ -112,7 +113,7 @@ if (messageText){
         sendTextMessage(senderID,'Awesome. You have a denied scandal!');
         break;
     case '/tweet-status':
-        tweetStatus(senderID);
+        randomFuncts.tweetStatus(senderID);
   }
 }
    else if (!messageAttachments === '😀') {
@@ -123,23 +124,30 @@ if (messageText){
 }
 }
 
-
-function tweetStatus(recipientId) {
+function morningGreeting(recipient) {
     var responseArray = [
-        'Not so good',
-        'Fair',
-        'Looking good',
-        'Thee were a lot of criticism',
-        'People loved it!',
-        'Tons of retweets',
-        'You should try better next time',
-        'Uh-oh! Bad tweet. . . ',
-        'Spot on! You have more followers because of your tweet'
-    ];
-
-    var response = Math.floor(Math.random()* (responseArray.length));
-    sendTextMessage(recipientId, responseArray[response]);
+        'Hey there!'
+    ]
 }
+
+
+
+// function tweetStatus(recipientId) {
+//     var responseArray = [
+//         'Not so good',
+//         'Fair',
+//         'Looking good',
+//         'Thee were a lot of criticism',
+//         'People loved it!',
+//         'Tons of retweets',
+//         'You should try better next time',
+//         'Uh-oh! Bad tweet. . . ',
+//         'Spot on! You have more followers because of your tweet'
+//     ];
+
+//     var response = Math.floor(Math.random()* (responseArray.length));
+//     sendTextMessage(recipientId, responseArray[response]);
+// }
 
 function buyStuffs(recipientId){
    sendTextMessage(recipientId,"Buy yourself any of the below to celebrate your recent success");
