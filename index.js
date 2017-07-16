@@ -265,7 +265,7 @@ case 'buy_jewelry':
              gifs.davidoHangoutWithMeekMill(senderID)
         }
     }, 6000);
-    coreFunct.sendText(senderID, 'That was from your music video!');
+    coreFunct.sendText(senderID, 'This was from your music video!');
     setTimeout((err, res) => {
         if (err) {
             coreFunct.sendText(senderID, "Oh No!! Try again!");
