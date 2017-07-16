@@ -1,4 +1,4 @@
-
+var request = require('request');
 exports.sendText = function sendTextMessage (recipientId, messageText){
   var messageData = {
     recipient : {
