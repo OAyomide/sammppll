@@ -25,7 +25,7 @@ var recastai = require('recastai');
 
 var request = new recastai.request('2408846236d39b61b4a566dd93f61bd0')
 
-request.analyseText('hi')
+request.analyseText('thirty billy be chilling in my account')
   .then(function(res) {
     var intent = res.intent()
 

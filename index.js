@@ -102,7 +102,11 @@ request.analyseText(messageText).then(function(res){
     if (intent.slug === 'greetings') {
         coreFunct.sendText(senderID, 'Hi to you.')
     } else if (intent.slug === 'laught') {
-        coreFunct.sendText(senderID, 'I know right?');
+        randomFuncts.jokeReply(senderID)
+    } else if (intent.slug === 'tweet' && 'davido30billion') {
+        randomFuncts.N30BillionTweetReply(senderID);
+    } else if (intent.slug === '30billiontweetreply') {
+        coreFunct.sendText('Yea. Hold On!')
     }
 })
 
