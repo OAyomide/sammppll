@@ -124,327 +124,10 @@ if (messageText){
    else if (!messageAttachments === '😀') {
       coreFunct.sendText(senderID, 'That seems incorrect')
   }
-  else if (messageText.charAt('0') === '@'){
+  else if (messageText.startsWith('@')){
       coreFunct.sendText(senderID, `Your tweet, ${messageText} has been posted. Send /tweet-status to see reactions`)
 }
 }
-
-//we want to init our first selection from our user
-function init (recipientId){
-    var messageData = {
-        recipient: {
-            id: recipientId
-        }, message: {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "list",
-                    elements: [
-                        {
-                            title: "Select a celebrity you want",
-                            subtitle: "Available celebrities",
-                            image_url: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg"
-                        }, {
-                            title: "Davido",
-                            subtitle: "Artiste",
-                            image_url: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg",
-                            buttons: [{
-                                type: "postback",
-                                title: "Select",
-                                payload: "davido_select"
-                            }]
-                        }, {
-                            title: "Wizkid",
-                            subtitle: "Artiste",
-                            image_url: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg",
-                            buttons: [{
-                                type: "postback",
-                                title: "Select",
-                                payload: "wizkid_select"
-                            }]
-                        }, {
-                            title: "Tiwa Savage",
-                            image_url: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg",
-                            subtitle: "Artiste",
-                            buttons: [{
-                                type: "postback",
-                                title: "Select",
-                                payload: "tiwa_select"
-                            }]
-                        }
-                    ]
-                }
-            }
-        }
-    };
-   callSendAPI(messageData);
-}
-
-
-//to show user selects davido
-
-function davidoSelect (recipientId) {
-    
-    var messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            attachment: {
-                type: "image",
-                payload: {
-                    url: URL+"/images/congrats.gif"
-                }
-            }
-        }
-    } 
-  callSendAPI(messageData);
-}
-
-
-function firstSend(recipientId) {
-    var messageData = {
-        recipient: {
-            id: recipientId
-        }, message: {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "button",
-                    text: "Lets get you started with some gears. What will you buy?",
-                    buttons: [
-                        {
-                            type: "postback",
-                            title: "Buy jewelry",
-                            payload: "buy_jewelry"
-                        }, {
-                            type: "postback",
-                            title: "Buy Car",
-                            payload: "buy_car"
-                        }
-                    ]
-                }
-            }
-        }
-    };
-    
-    callSendAPI(messageData);
-};
-
-function jewelryBought(recipientId) {
-        var messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            attachment: {
-                type: "image",
-                payload: {
-                    url: URL+"/images/jesuspieces.jpg"
-                }
-            }
-        }
-    } 
-  callSendAPI(messageData);
-}
-
-
-
-
-
-
-
-function secondSend(recipientId) {
-    var messageData = {
-        recipient: {
-            id: recipientId
-        }, message: {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "button",
-                    text: "A fine chick wants to hang out with you!",
-                    buttons: [
-                        {
-                            type: "postback",
-                            title: "Hang out & party hard",
-                            payload: "party_hard"
-                        }, {
-                            type: "postback",
-                            title: "Turn down",
-                            payload: "reject_party"
-                        }
-                    ]
-                }
-            }
-        }
-    };
-    callSendAPI(messageData);
-}
-
-
-
-function partyRejected(recipientId) {
-    var messageData = {
-        recipient: {
-            id: recipientId
-        }, message: {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "button",
-                    text: "Unfortunately, Meek mill was at the party. You missed a chance to talk to him. Your manager set up another meeting on your behalf.",
-                    buttons: [
-                        {
-                            type: "postback",
-                            title: "Meet Up",
-                            payload: "meet_meek"
-                        }
-                    ]
-                }
-            }
-        }
-    };
-    callSendAPI(messageData);
-};
-
-//an attachment showing a recording session/ or hanging out pics of Davido and Meek Mill goes here.
-function davidoHangoutWithMeek(recipientId) {
-    
-    var messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            attachment: {
-                type: "image",
-                payload: {
-                    url: URL+"/images/meekhangout.gif"
-                }
-            }
-        }
-    } 
-  callSendAPI(messageData);
-}
-
-
-
-function thirdSend(recipientId) {
-    var messageData = {
-        recipient: {
-            id: recipientId
-        }, message: {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "button",
-                    text: "Looks like you've got a 'BabyMama' scandal. How would you react?",
-                    buttons: [
-                        {
-                            type: "postback",
-                            title: "Deny it",
-                            payload: "deny_scandal"
-                        }, {
-                            type: "postback",
-                            title: "Confirm it",
-                            payload: "confirm_scandal"
-                        },{
-                            type: "postback",
-                            title: "Do nothing",
-                            payload: "scandal_do_nothing"
-                        }
-                    ]
-                }
-            }
-        }
-    };
-    callSendAPI(messageData);
-};
-
-function confirmScandalGif(recipientId) {
-    var messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            attachment: {
-                type: "image",
-                payload: {
-                    url: URL+"/images/surprise.gif"
-                }
-            }
-        }
-    }
-  callSendAPI(messageData);
-}
-
-function fourthSend(recipientId) {
-    var messageData = {
-        recipient: {
-            id: recipientId
-        }, message: {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "button",
-                    text: "You were approcahed for a collaboration by an upcoming artiste's manager.",
-                    buttons: [
-                        {
-                            type: "postback",
-                            title: "Go for it",
-                            payload: "collabo_initial_accept"
-                        }, {
-                            type: "postback",
-                            title: "Turn down",
-                            payload: "collabo_initial_reject"
-                        }
-                    ]
-                }
-            }
-        }
-    };
-    callSendAPI(messageData);
-};
-
-
-
-//here we want the user to buy something for him or herself so we present him or her with an array of stuffs to buy
-
-
-function carBought(recipientId){
-    var messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            attachment:{
-                type:"image",
-                payload: {
-                    url: "https://media.giphy.com/media/10l91Jwn7ahKGA/giphy.gif"
-                }
-            }
-        }
-    }
-    callSendAPI(messageData);
-}
-
-function party(recipientId){
-    var messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            attachment:{
-                type:"image",
-                payload: {
-                    url: "http://quotesblog.net/wp-content/uploads/2015/05/party-gifs-hell-yeah.gif"
-                }
-            }
-        }
-    }
-    callSendAPI(messageData);
-}
-
 
 
 function receivedPostback(event) {
@@ -481,24 +164,12 @@ function receivedPostback(event) {
     });  
 }
   break;
-case "sermon":
-  {
-  coreFunct.sendText(senderID,"Here is the latest audio sermon");
-  sendAudioMessage(senderID);
-}
-break;
-
-case "menu":{
-  sendChurch(senderID);
-}
-break;
 case "contact":
     setTimeout(function(err, res) {
         if(!res) {
              prompts.init(senderID);
         }
-    }, 2000)
-  
+    }, 2000) 
   coreFunct.sendText(recipientId, "Baddest! So let us see if you can live like Davido");
   break;
 case "help":
@@ -506,10 +177,10 @@ case "help":
   break;
 case 'davido_select':
 
-    davidoSelect(senderID);
+    gifs.davidoSelectedGif(senderID);
     setTimeout(function(err, res) {
         if (!err) {
-            firstSend(senderID)
+            prompts.firstSend(senderID);
         }
     }, 6000)
   break;
@@ -519,7 +190,7 @@ new Promise(function(resolve, reject) {
 }).then(setTimeout(function(err, res){
     if (!err) {
         coreFunct.sendText(senderID, "Niiccee");
-        secondSend(senderID);
+        prompts.secondSend(senderID);
     }
 }, 6000))
 
@@ -557,7 +228,7 @@ break;
   coreFunct.sendText(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
     setTimeout(function(err, res) {
         if (!err) {
-            party(senderID);
+            gifs.partyGif(senderID);
         }
     }, 3000);
 
@@ -573,6 +244,10 @@ break;
         coreFunct.sendText(senderID, 'Congrats on your first scandal denial \
         Send 😀 to claim your achievement 🏆. If you send the wrong one or don\'t send any, you are going lose the trophy but not the \
         scandal (of course!)');
+        break;
+
+    case 'confirm_scandal':
+        gifs.confirmScandalGif(senderID);
         break;
 
     case 'emergency':

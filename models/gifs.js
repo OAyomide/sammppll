@@ -18,6 +18,96 @@ exports.carBought = function carBought(recipientId){
 }
 
 
+exports.confirmScandalGif = function confirmScandalGif(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "image",
+                payload: {
+                    url: URL+"/images/surprise.gif"
+                }
+            }
+        }
+    }
+  callSendAPI(messageData);
+}
+
+exports.partyGif = function party(recipientId){
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment:{
+                type:"image",
+                payload: {
+                    url: "http://quotesblog.net/wp-content/uploads/2015/05/party-gifs-hell-yeah.gif"
+                }
+            }
+        }
+    }
+    callSendAPI(messageData);
+}
+
+
+exports.davidoSelectedGif = function davidoSelect (recipientId) {
+    
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "image",
+                payload: {
+                    url: URL+"/images/congrats.gif"
+                }
+            }
+        }
+    } 
+  callSendAPI(messageData);
+}
+
+exports.davidoHangoutWithMeekMill = function davidoHangoutWithMeek(recipientId) {
+    
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "image",
+                payload: {
+                    url: URL+"/images/meekhangout.gif"
+                }
+            }
+        }
+    } 
+  callSendAPI(messageData);
+}
+
+
+exports.jewelryBought = function jewelryBought(recipientId) {
+        var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "image",
+                payload: {
+                    url: URL+"/images/jesuspieces.jpg"
+                }
+            }
+        }
+    } 
+  callSendAPI(messageData);
+}
+
+
 
 
 
