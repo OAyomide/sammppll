@@ -256,6 +256,19 @@ case 'buy_jewelry':
     case 'reject_party':
         prompts.partyRejected(senderID);
         break;
+
+    case 'meet_meek' :
+    setTimeout((err, res) => {
+        if (err) {
+            coreFunct.sendText(senderID, "Sorry, please try again.")
+        } else if (!err) {
+             gifs.davidoHangoutWithMeekMill(senderID)
+        }
+    }, 3000);
+    coreFunct.sendText(senderID, 'That was from your music video!');
+    coreFunct.sendText(senderID, 'At this juncture, you have to tweet this! Because it is awesome!');
+        break;
+       
     case 'deny_scandal':
         coreFunct.sendText(senderID, 'Congrats on your first scandal denial \
         Send 😀 to claim your achievement 🏆. If you send the wrong one or don\'t send any, you are going lose the trophy but not the \
