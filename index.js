@@ -89,6 +89,9 @@ function receivedMessage(event){
 //             sendArticle(senderID, res);
 //           });
 // });
+ if (messageText.startsWith('@')){
+      coreFunct.sendText(senderID, `Your tweet, ${messageText} has been posted. Send /tweet-status to see reactions`)
+}
 
 var request = new recastai.request('2408846236d39b61b4a566dd93f61bd0');
 
@@ -124,9 +127,7 @@ if (messageText){
    else if (!messageAttachments === '😀') {
       coreFunct.sendText(senderID, 'That seems incorrect')
   }
-  else if (messageText.startsWith('@')){
-      coreFunct.sendText(senderID, `Your tweet, ${messageText} has been posted. Send /tweet-status to see reactions`)
-}
+  
 }
 
 
