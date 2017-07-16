@@ -82,7 +82,7 @@ exports.davidoHangoutWithMeekMill = function davidoHangoutWithMeek(recipientId) 
             attachment: {
                 type: "image",
                 payload: {
-                    url: "https://www.google.com.ng/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwj3tsy2747VAhWLblAKHWDnCe4QjRwIBw&url=http%3A%2F%2Ftooxclusive.com%2Fdownload-mp3%2Fvideo-davido-fans-mi-ft-meek-mill-b-t-s-photos%2F&psig=AFQjCNGU6lKSWE3KaRpTKVeFxFYKYUKBng&ust=1500331176765258"
+                    url: URL+ "/images/davidomeek.png"
                 }
             }
         }
