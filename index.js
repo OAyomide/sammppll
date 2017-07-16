@@ -234,7 +234,7 @@ case 'buy_jewelry':
         else if (!err) {
             gifs.jewelryBought(senderID)
         }
-    }, 4000);
+    }, 6000);
     coreFunct.sendText(senderID, 'How is your new chain?');
     break;
   case 'party_hard':
