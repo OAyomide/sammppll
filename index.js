@@ -256,7 +256,7 @@ break;
 
 
     case 'scandal_do_nothing':
-        fourthSend(senderID);
+        prompts.fourthSend(senderID);
         break;
 
 
