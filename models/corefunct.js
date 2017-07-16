@@ -1,4 +1,5 @@
 var request = require('request');
+var fb_page_token = process.env.FB_ACCESS_TOKEN;
 exports.sendText = function sendTextMessage (recipientId, messageText){
   var messageData = {
     recipient : {
