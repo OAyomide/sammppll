@@ -100,7 +100,7 @@ exports.jewelryBought = function jewelryBought(recipientId) {
             attachment: {
                 type: "image",
                 payload: {
-                    url: URL+"/images/jesuspieces.jpg"
+                    url: "https://media.giphy.com/media/e6bq6Xih5SzZK/giphy.gif"
                 }
             }
         }

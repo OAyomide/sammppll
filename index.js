@@ -225,6 +225,18 @@ setTimeout((err, res) => {
 }, 6000)
 });
 break;
+
+case 'buy_jewelry':
+    setTimeout((err, res) => {
+        if(err) {
+            coreFunct.sendText(senderID, 'Oops! Try buying again!')
+        }
+        else if (!err) {
+            gifs.jewelryBought(senderID)
+        }
+    }, 4000);
+    coreFunct.sendText(senderID, 'How is your new chain?');
+    break;
   case 'party_hard':
   coreFunct.sendText(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
     setTimeout(function(err, res) {
