@@ -14,6 +14,7 @@ var randomFuncts = require('./models/funcs')
 var coreFunct = require('./models/corefunct');
 var stuff = require('./models/stuffs');
 var davidoStuffs = require('./models/dav');
+var prompts = require('./models/prompts');
 var recastai = require('recastai');
 var cars = [];
 
@@ -126,83 +127,6 @@ if (messageText){
       coreFunct.sendText(senderID, `Your tweet, ${messageText} has been posted. Send /tweet-status to see reactions`)
 }
 }
-
-
-
-
-
-
-
-function buyStuffs(recipientId){
-   coreFunct.sendText(recipientId,"Buy yourself any of the below to celebrate your recent success");
-  var messageData ={
-    recipient:{
-      id:recipientId
-    },message:{
-        attachment:{
-            type: "template",
-            payload:{
-                template_type:"generic",
-                elements:[
-                    {
-                        image_url:URL + '/images/mustang.jpg',
-                        title: "Buy yourself a Mustang",
-                        subtitle: "Ford GT 2018",
-                        buttons:[{
-                          type: "postback",
-                          payload: "buy_car",
-                          title: "Buy car"
-                        }
-                        ]
-                      },{
-                         image_url:URL+"/images/mansion.jpg",
-                        title: "Lekki Mansion",
-                        subtitle: "Buy a Mansion at Lekki",
-                        buttons:[{
-                          type:"postback",
-                          payload: "buy_house",
-                          title: "Buy Mansion"
-                        }
-                        ]
-                      },{
-                         image_url: URL+"/images/jesuspieces.jpg",
-                        title: "A Jesus piece encrusted with Diamonds",
-                        subtitle: "Customized 18 karat Jesus pieces",
-                        buttons:[{
-                          type:"postback",
-                          payload: "buy_chain",
-                          title: "Buy chain"
-                        }
-                        ]
-                      }, {
-                         image_url: URL+"/images/sneakers.jpg",
-                        title: "Gold lined OVO sneaker",
-                        subtitle: "Customized 18 karat Jesus pieces",
-                        buttons:[{
-                          type:"postback",
-                          payload: "buy_sneaker",
-                          title: "Buy Sneaker"
-                        }
-                        ]
-                      }, {
-                         image_url: URL+"/images/batmobile.jpg",
-                        title: "A supercharged batmobile",
-                        subtitle: "specially customized for you.",
-                        buttons:[{
-                          type:"postback",
-                          payload: "buy_mobile",
-                          title: "Buy Batmobile"
-                        }
-                        ]
-                      }
-                ]
-            }
-        }
-    }
-    };
-    callSendAPI(messageData);
-}
-
 
 //we want to init our first selection from our user
 function init (recipientId){
@@ -639,7 +563,7 @@ break;
 case "contact":
     setTimeout(function(err, res) {
         if(!res) {
-             init(senderID);
+             prompts.init(senderID);
         }
     }, 2000)
   
