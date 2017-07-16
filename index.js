@@ -11,6 +11,7 @@ var feedRead = require('feed-read');
 var request = require('request');
 var promiseDelay = require('promise-delay');
 var randomFuncts = require('./models/funcs')
+var coreFunct = require('./models/corefunct');
 var recastai = require('recastai');
 var cars = [];
 
@@ -92,9 +93,9 @@ request.analyseText(messageText).then(function(res){
 
     //we want to handle the logic of our text to see the intent and act
     if (intent.slug === 'greetings') {
-        sendTextMessage(senderID, 'Hi to you.')
+        coreFunct.sendText(senderID, 'Hi to you.')
     } else if (intent.slug === 'laught') {
-        sendTextMessage(senderID, 'I know right?');
+        coreFunct.sendText(senderID, 'I know right?');
     }
 })
 
@@ -110,17 +111,17 @@ if (messageText){
         buyStuffs(senderID);
         break;
     case '😀':
-        sendTextMessage(senderID,'Awesome. You have a denied scandal!');
+        coreFunct.sendText(senderID,'Awesome. You have a denied scandal!');
         break;
     case '/tweet-status':
         randomFuncts.tweetStatus(senderID);
   }
 }
    else if (!messageAttachments === '😀') {
-      sendTextMessage(senderID, 'That seems incorrect')
+      coreFunct.sendText(senderID, 'That seems incorrect')
   }
   else if (messageText.charAt('0') === '@'){
-      sendTextMessage(senderID, `Your tweet, ${messageText} has been posted. Send /tweet-status to see reactions`)
+      coreFunct.sendText(senderID, `Your tweet, ${messageText} has been posted. Send /tweet-status to see reactions`)
 }
 }
 
@@ -146,11 +147,11 @@ function morningGreeting(recipient) {
 //     ];
 
 //     var response = Math.floor(Math.random()* (responseArray.length));
-//     sendTextMessage(recipientId, responseArray[response]);
+//     coreFunct.sendText(recipientId, responseArray[response]);
 // }
 
 function buyStuffs(recipientId){
-   sendTextMessage(recipientId,"Buy yourself any of the below to celebrate your recent success");
+   coreFunct.sendText(recipientId,"Buy yourself any of the below to celebrate your recent success");
   var messageData ={
     recipient:{
       id:recipientId
@@ -501,7 +502,7 @@ function fourthSend(recipientId) {
 
 //here we want the user to buy something for him or herself so we present him or her with an array of stuffs to buy
 function buyStuffs(recipientId, articles){
-    sendTextMessage(recipientId,"Buy yourself any of the below to celebrate your recent success");
+    coreFunct.sendText(recipientId,"Buy yourself any of the below to celebrate your recent success");
   var messageData ={
     recipient:{
       id:recipientId
@@ -635,7 +636,7 @@ function receivedPostback(event) {
         greeting = "Hey " + name + "! ";
       }
       var message = greeting + "I am ZangaBot. I am here to see how you will live like a celeb.";
-      sendTextMessage(senderID, message);
+      coreFunct.sendText(senderID, message);
       //quickButtons(senderID);
       init(senderID);
     });  
@@ -643,7 +644,7 @@ function receivedPostback(event) {
   break;
 case "sermon":
   {
-  sendTextMessage(senderID,"Here is the latest audio sermon");
+  coreFunct.sendText(senderID,"Here is the latest audio sermon");
   sendAudioMessage(senderID);
 }
 break;
@@ -659,7 +660,7 @@ case "contact":
         }
     }, 2000)
   
-  sendTextMessage(recipientId, "Baddest! So let us see if you can live like Davido");
+  coreFunct.sendText(recipientId, "Baddest! So let us see if you can live like Davido");
   break;
 case "help":
   quickButtons(senderID);
@@ -678,7 +679,7 @@ new Promise(function(resolve, reject) {
     carBought(senderID)
 }).then(setTimeout(function(err, res){
     if (!err) {
-        sendTextMessage(senderID, "Niiccee");
+        coreFunct.sendText(senderID, "Niiccee");
         secondSend(senderID);
     }
 }, 6000))
@@ -692,7 +693,7 @@ setTimeout((err, res) => {
         console.log('Timeout setting error');
     }
     else if (!err) {
-         sendTextMessage(senderID, "Okey Dokey! Seems you have a taste for exquisite rides. A car 🚗 has been added to your \
+         coreFunct.sendText(senderID, "Okey Dokey! Seems you have a taste for exquisite rides. A car 🚗 has been added to your \
         garage");
         var newGarage = cars.length + 1;
         cars.push(newGarage);
@@ -700,12 +701,12 @@ setTimeout((err, res) => {
         console.log(`HE NOW HAS ${tots} car(s)`);
         
             if (tots === 1){
-                sendTextMessage(senderID,`You have one new car!`)
+                coreFunct.sendText(senderID,`You have one new car!`)
             }
 
             //when the tots is more than one
             else if (tots === 5) {
-                 sendTextMessage(senderID, `Cool!! People be thinkin' you chillin' \
+                 coreFunct.sendText(senderID, `Cool!! People be thinkin' you chillin' \
                  at the office park with more than ${tots} cars!`);
             }    
         
@@ -714,7 +715,7 @@ setTimeout((err, res) => {
 });
 break;
   case 'party_hard':
-  sendTextMessage(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
+  coreFunct.sendText(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
     setTimeout(function(err, res) {
         if (!err) {
             party(senderID);
@@ -730,13 +731,13 @@ break;
     break;
 
     case 'deny_scandal':
-        sendTextMessage(senderID, 'Congrats on your first scandal denial \
+        coreFunct.sendText(senderID, 'Congrats on your first scandal denial \
         Send 😀 to claim your achievement 🏆. If you send the wrong one or don\'t send any, you are going lose the trophy but not the \
         scandal (of course!)');
         break;
 
     case 'emergency':
-        sendTextMessage(senderID, 'Quick reply callback payload')
+        coreFunct.sendText(senderID, 'Quick reply callback payload')
         break;
 
 
@@ -746,13 +747,13 @@ break;
 
 
     case 'collabo_initial_accept':
-        sendTextMessage(senderID,'That didn\'t turn out well! But you have another artiste owe you!');
-        sendTextMessage(senderID, 'Send 😎😎😎 to continue');
+        coreFunct.sendText(senderID,'That didn\'t turn out well! But you have another artiste owe you!');
+        coreFunct.sendText(senderID, 'Send 😎😎😎 to continue');
         break;
     
     case 'collabo_initial_reject':
-        sendTextMessage(senderID, 'If you heard that your album was burnt due to low quality, what are you going to tweet');
-        sendTextMessage(senderID, 'type: @tweet- befor you type your tweet so I can understand you are tweeting');
+        coreFunct.sendText(senderID, 'If you heard that your album was burnt due to low quality, what are you going to tweet');
+        coreFunct.sendText(senderID, 'type: @tweet- befor you type your tweet so I can understand you are tweeting');
         break;
 }
 
@@ -760,17 +761,17 @@ break;
     "at %d", senderID, recipientID, payload, timeOfPostback);
 }
 
-function sendTextMessage (recipientId, messageText){
-  var messageData = {
-    recipient : {
-      id: recipientId
-    },
-    message:{
-      text: messageText
-    }
-  };
-  callSendAPI(messageData);
-}
+// function coreFunct.sendText (recipientId, messageText){
+//   var messageData = {
+//     recipient : {
+//       id: recipientId
+//     },
+//     message:{
+//       text: messageText
+//     }
+//   };
+//   callSendAPI(messageData);
+// }
 
 
 function quickButtons(recipientId){
@@ -807,27 +808,27 @@ callSendAPI(messageData);
 
 
 
-function callSendAPI (messageData){
-  request({
-    uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: {
-      access_token: fb_page_token
-    },
-    method: 'POST',
-    json: messageData
-  }, function(error, response, body){
-    if (!error && response.statusCode == 200) {
-      var recipientId = body.recipient_id;
-      var messageId = body.message_id;
-      console.log('Successfully sent generic message with id %s to recipient %s', messageId, recipientId);
-    }
-    else {
-      console.error('Unable to send message.');
-      console.error(response);
-      console.error(error);
-    }
-  });
-}
+// function callSendAPI (messageData){
+//   request({
+//     uri: 'https://graph.facebook.com/v2.6/me/messages',
+//     qs: {
+//       access_token: fb_page_token
+//     },
+//     method: 'POST',
+//     json: messageData
+//   }, function(error, response, body){
+//     if (!error && response.statusCode == 200) {
+//       var recipientId = body.recipient_id;
+//       var messageId = body.message_id;
+//       console.log('Successfully sent generic message with id %s to recipient %s', messageId, recipientId);
+//     }
+//     else {
+//       console.error('Unable to send message.');
+//       console.error(response);
+//       console.error(error);
+//     }
+//   });
+// }
 
 //we want to subscribe the user to receive the notification. For user ids that exist in the db, send them subscriptions
 //read request npm
