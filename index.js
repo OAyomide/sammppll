@@ -13,6 +13,7 @@ var promiseDelay = require('promise-delay');
 var randomFuncts = require('./models/funcs')
 var coreFunct = require('./models/corefunct');
 var stuff = require('./models/stuffs');
+var davidoStuffs = require('./models/dav');
 var recastai = require('recastai');
 var cars = [];
 
@@ -109,7 +110,7 @@ if (messageText){
       init(senderID);
       break;
     case '/buy':
-        buyStuffs(senderID);
+        davidoStuffs.buyStuff(senderID);
         break;
     case '😀':
         coreFunct.sendText(senderID,'Awesome. You have a denied scandal!');
@@ -126,30 +127,11 @@ if (messageText){
 }
 }
 
-function morningGreeting(recipient) {
-    var responseArray = [
-        'Hey there!'
-    ]
-}
 
 
 
-// function tweetStatus(recipientId) {
-//     var responseArray = [
-//         'Not so good',
-//         'Fair',
-//         'Looking good',
-//         'Thee were a lot of criticism',
-//         'People loved it!',
-//         'Tons of retweets',
-//         'You should try better next time',
-//         'Uh-oh! Bad tweet. . . ',
-//         'Spot on! You have more followers because of your tweet'
-//     ];
 
-//     var response = Math.floor(Math.random()* (responseArray.length));
-//     coreFunct.sendText(recipientId, responseArray[response]);
-// }
+
 
 function buyStuffs(recipientId){
    coreFunct.sendText(recipientId,"Buy yourself any of the below to celebrate your recent success");

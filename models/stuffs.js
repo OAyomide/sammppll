@@ -30,6 +30,12 @@ callSendAPI(messageData);
 }
 
 
+exports.morningGreetings = function morningGreeting(recipient) {
+    var responseArray = [
+        'Hey there!'
+    ]
+}
+
 
 function callSendAPI (messageData){
   request({
