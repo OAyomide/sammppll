@@ -249,7 +249,7 @@ case 'buy_jewelry':
         if(!err) {
             
         }
-        thirdSend(senderID);
+        prompts.thirdSend(senderID);
     }, 5000)
     break;
 
