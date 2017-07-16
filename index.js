@@ -10,6 +10,7 @@ var verify_token = "sample_verify";
 var feedRead = require('feed-read');
 var request = require('request');
 var promiseDelay = require('promise-delay');
+var recastai = require('recastai');
 var cars = [];
 
 var URL = process.env.SERVER_URL;
@@ -83,7 +84,16 @@ function receivedMessage(event){
 //           });
 // });
 
+var request = new recastai.request('2408846236d39b61b4a566dd93f61bd0');
 
+request.analyseText(messageText).then(function(res){
+    var intent = res.intent();
+
+    //we want to handle the logic of our text to see the intent and act
+    if (intent === 'greeting') {
+        sendTextMessage(senderID, 'Hi to you.')
+    }
+})
 
 if (messageText){
   switch (messageText) {
