@@ -101,8 +101,6 @@ if (messageText){
         break;
     case '/tweet-status':
         tweetStatus(senderID);
-    default:
-      sendTextMessage(senderID, "I don't seem to understand yet");
   }
 }
    else if (!messageAttachments === '😀') {
@@ -119,9 +117,12 @@ function tweetStatus(recipientId) {
         'Not so good',
         'Fair',
         'Looking good',
-        'A lot of criticism',
+        'Thee were a lot of criticism',
         'People loved it!',
         'Tons of retweets',
+        'You should try better next time',
+        'Uh-oh! Bad tweet. . . ',
+        'Spot on! You have more followers because of your tweet'
     ];
 
     var response = Math.floor(Math.random()* (responseArray.length));
