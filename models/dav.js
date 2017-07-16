@@ -1,5 +1,6 @@
 var request = require('request');
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
+var URL = process.env.SERVER_URL;
 var core_2 = require('./corefunct');
  exports.buyStuff = function buyStuffs(recipientId){
    core_2.sendText(recipientId,"Buy yourself any of the below to celebrate your recent success");
