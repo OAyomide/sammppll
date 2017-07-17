@@ -289,7 +289,23 @@ case 'buy_jewelry':
         break;
 
     case 'confirm_scandal':
-        gifs.confirmScandalGif(senderID);
+        setTimeout((err, res) => {
+            if (err) {
+                console.log('Eroor');
+                coreFunct.sendText(senderID, 'Please try again!')
+            }
+            else if (!err) {
+                gifs.confirmScandalGif(senderID);
+            }
+        }, 6000);
+        setTimeout((err, res) => {
+            if(err) {
+                coreFunct.sendText(senderID, 'Please try again')
+            } else if(!err) {
+                coreFunct.sendText(senderID, 'Okay! Lets move on!')
+            }
+        }, 7000)
+        prompts.fourthSend(senderID);
         break;
 
     case 'emergency':
