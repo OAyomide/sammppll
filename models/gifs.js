@@ -28,7 +28,7 @@ exports.confirmScandalGif = function confirmScandalGif(recipientId) {
             attachment: {
                 type: "image",
                 payload: {
-                    url: URL+"/images/suprise.gif"
+                    url: URL+ "/images/suprise.gif"
                 }
             }
         }
