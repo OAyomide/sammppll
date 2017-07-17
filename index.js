@@ -300,12 +300,13 @@ case 'buy_jewelry':
         }, 6000);
         setTimeout((err, res) => {
             if(err) {
-                coreFunct.sendText(senderID, 'Please try again')
+                coreFunct.sendText(senderID, 'Please try again');
             } else if(!err) {
-                coreFunct.sendText(senderID, 'Okay! Lets move on!')
+                coreFunct.sendText(senderID, 'Okay! Lets move on!');
+                 prompts.fourthSend(senderID);
             }
         }, 7000)
-        prompts.fourthSend(senderID);
+       
         break;
 
     case 'emergency':
