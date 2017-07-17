@@ -106,7 +106,8 @@ request.analyseText(messageText).then(function(res){
     } else if (intent.slug === 'davido30billion') {
         randomFuncts.N30BillionTweetReply(senderID);
     } else if (intent.slug === '30billiontweetreply') {
-        coreFunct.sendText('Yea. Hold On!')
+        gifs.N30Btweetmeme(senderID);
+        gifs.N30Btweetmeme2(senderID);
     }
 })
 

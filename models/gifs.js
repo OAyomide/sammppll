@@ -91,6 +91,42 @@ exports.davidoHangoutWithMeekMill = function davidoHangoutWithMeek(recipientId) 
 }
 
 
+exports.N30Btweetmeme = function tweetMeme(recipientId) {
+    
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "image",
+                payload: {
+                    url: URL+ "/images/30b6.png"
+                }
+            }
+        }
+    } 
+  callSendAPI(messageData);
+}
+
+exports.N30Btweetmeme2 = function tweetMeme2(recipientId) {
+    
+    var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "image",
+                payload: {
+                    url: URL+ "/images/30b5.png"
+                }
+            }
+        }
+    } 
+  callSendAPI(messageData);
+}
+
 exports.jewelryBought = function jewelryBought(recipientId) {
         var messageData = {
         recipient: {
