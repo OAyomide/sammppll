@@ -297,7 +297,7 @@ case 'buy_jewelry':
             else if (!err) {
                 gifs.confirmScandalGif(senderID);
             }
-        }, 6000);
+        }, 8000);
         setTimeout((err, res) => {
             if(err) {
                 coreFunct.sendText(senderID, 'Please try again');
@@ -305,7 +305,7 @@ case 'buy_jewelry':
                 coreFunct.sendText(senderID, 'Okay! Lets move on!');
                  prompts.fourthSend(senderID);
             }
-        }, 7000)
+        }, 10000)
        
         break;
 
