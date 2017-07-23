@@ -183,7 +183,7 @@ function receivedPostback(event) {
       var message = greeting + "I am ZangaBot. I am here to see how you will live like a celeb.";
       coreFunct.sendText(senderID, message);
       //quickButtons(senderID);
-      init(senderID);
+     prompts.init(senderID);
     });  
 }
   break;
