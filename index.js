@@ -165,7 +165,7 @@ function receivedPostback(event) {
       url: "https://graph.facebook.com/v2.6/" + senderID,
       qs: {
         access_token: fb_page_token,
-        fields: "gender",
+        fields: "hometown",
       },
       method: "GET"
     }, function(error, response, body) {
