@@ -135,6 +135,20 @@ if (messageText){
   
 }
 
+function getUserDp (event) {
+    var senderID = event.sender.id;
+  var recipientID = event.recipient.id;
+  var timeOfPostback = event.timestamp;
+  
+  var getStuf = request({
+      url: "https://graph.facebook.com/v2.6/" + senderID,
+      qs: {
+          access_token: fb_page_token,
+          fields: "cover"
+      }
+  })
+}
+
 
 function receivedPostback(event) {
   var senderID = event.sender.id;
@@ -151,7 +165,10 @@ function receivedPostback(event) {
       url: "https://graph.facebook.com/v2.6/" + senderID,
       qs: {
         access_token: fb_page_token,
-        fields: "first_name"
+        fields: [
+            "first_name",
+            "gender"
+        ]
       },
       method: "GET"
     }, function(error, response, body) {
