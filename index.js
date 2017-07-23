@@ -165,7 +165,10 @@ function receivedPostback(event) {
       url: "https://graph.facebook.com/v2.6/" + senderID,
       qs: {
         access_token: fb_page_token,
-        fields: "gender",
+        fields:{
+            first: "first_name",
+            gend: "gender"
+        },
       },
       method: "GET"
     }, function(error, response, body) {
@@ -174,7 +177,7 @@ function receivedPostback(event) {
         console.log("Error getting user's name: " +  error);
       } else {
         var bodyObj = JSON.parse(body);
-        name = bodyObj.gender;
+        name = bodyObj.first_name;
         greeting = "Hey " + name + "! ";
       }
       var message = greeting + "I am ZangaBot. I am here to see how you will live like a celeb.";
