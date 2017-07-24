@@ -196,6 +196,119 @@ exports.fourthSend = function fourthSend(recipientId) {
 };
 
 
+exports.scandalReSurfaced = function scandalRe(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "The scandal you denied is back! People are talking. What decision are you going to take?",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Continue denying",
+                            payload: "scandal_resurface_denial"
+                        }, {
+                            type: "postback",
+                            title: "Finally confirm",
+                            payload: "scandal_resurface_confirm"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
+
+
+exports.fifthSend = function fifthSend(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "You lost the grace of your record label after your scandal denial.\
+                    Your contract has been terminated.",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Leave label",
+                            payload: "leave_label"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
+
+
+exports.fifthSend = function fifthSend(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "You lost the grace of your record label after your scandal denial.\
+                    Your contract has been terminated.",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Leave label",
+                            payload: "leave_label"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
+
+
+exports.sixthSend = function sixthSend(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "There is a deal opening at another label, Old Savage Records. Are you going to take the deal?",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Accept",
+                            payload: "accept_label_deal"
+                        },{
+                            type: "postback",
+                            title: "Reject",
+                            payload: "accept_label_deal"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
+
+
+
+
+
 
 function callSendAPI (messageData){
   request({

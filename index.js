@@ -127,12 +127,44 @@ if (messageText){
         break;
     case '/tweet-status':
         randomFuncts.tweetStatus(senderID);
+        break;
+
+    case 'cont':
+        coreFunct.sendText(senderID,'You have to drop a track so they\'all can you know you\'re very much still in the game!\
+        Select a type of Hip-Hop you\'ll release');
+        trackRelease(senderID)
   }
 }
    else if (!messageAttachments === '😀') {
       coreFunct.sendText(senderID, 'That seems incorrect')
   }
   
+}
+
+function trackRelease(recipientId) {
+    var messageData = {
+        recipient:{
+            id: recipientId
+        }, message: {
+            text: "Quick Menu",
+            quick_replies: [
+                {
+                    content_type: "text",
+                    title: "Trap",
+                    payload: "trap"
+                }, {
+                    content_type: "text",
+                    title: "Rap",
+                    payload: "rap"
+                }, {
+                    content_type: "text",
+                    title: "Afro-pop",
+                    payload: "afro_pop"
+                }
+            ]
+        }
+    }
+    callsendAPI(messageData)
 }
 
 function getUserDp (event) {
