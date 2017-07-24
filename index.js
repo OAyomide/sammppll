@@ -141,7 +141,7 @@ if (messageText){
     case 'Trap':
     
         function keepPass (senderid,myText) {
-        coreFunct.sendText(senderID, 'This works')
+        coreFunct.sendText(senderID, `This works ${myText}`)
     }
     keepPass(senderID)
   }
