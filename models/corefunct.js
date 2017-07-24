@@ -12,6 +12,18 @@ exports.sendText = function sendTextMessage (recipientId, messageText){
   callSendAPI(messageData)
 }
 
+exports.sendTextTwo = function sendTextMessage (recipientId, messageText, myText){
+  var messageData = {
+    recipient : {
+      id: recipientId
+    },
+    message:{
+      text: messageText
+    }
+  };
+  callSendAPI(messageData)
+}
+
 function callSendAPI (messageData){
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',

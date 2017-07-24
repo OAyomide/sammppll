@@ -139,7 +139,7 @@ if (messageText){
         break;
 
     case 'Trap':
-        coreFunct.sendText(senderID, 'What do you want to call your new Track?');
+        coreFunct.sendTextTwo(senderID, 'What do you want to call your new Track?', messageText);
         var myMessage = message.text
         coreFunct.sendText(senderID, `The title of the ${myMessage}`);
   }
