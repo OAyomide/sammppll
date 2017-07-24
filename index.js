@@ -139,9 +139,11 @@ if (messageText){
         break;
 
     case 'Trap':
-        coreFunct.sendTextTwo(senderID, 'What do you want to call your new Track?', messageText);
-        var myMessage = this.messageText
-        coreFunct.sendText(senderID, `The title of the ${myMessage}`);
+    
+        function keepPass (senderid,myText) {
+        coreFunct.sendText(senderID, 'This works')
+    }
+    keepPass(senderID)
   }
 }
    else if (!messageAttachments === '😀') {
