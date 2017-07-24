@@ -130,10 +130,16 @@ if (messageText){
         break;
 
     case 'cont':
-        coreFunct.sendText(senderID,'You have to drop a track so they\'all can you know you\'re very much still in the game!\
-        Select a type of Hip-Hop you\'ll release');
-        trackRelease(senderID)
+        coreFunct.sendText(senderID,'You have to drop a track so they\'all can you know you\'re very much still in the game! Select a type of Hip-Hop you\'ll release');
+        setTimeout((err, res) => {
+            if (!err) {
+                trackRelease(senderID)
+            }
+        }, 2000);
         break;
+
+    case 'Trap':
+        coreFunct.sendText(senderID, 'What do you want to call your new Track?')
   }
 }
    else if (!messageAttachments === '😀') {
