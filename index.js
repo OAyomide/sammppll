@@ -70,6 +70,16 @@ app.post('/webhook', function(req, res){
 // });
 // }
 
+function title (event) {
+    var senderID = event.sender.id;
+    var recipientID = event.recipient.id
+    var timeOfMessage = event.timestamp;
+    var message = event.message
+
+    var messageText = message.text
+    
+}
+
 function receivedMessage(event){
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
@@ -139,11 +149,13 @@ if (messageText){
         break;
 
     case 'Trap':
-    
-        function keepPass (senderid,myText) {
-        coreFunct.sendText(senderID, `This works ${myText}`)
-    }
-    keepPass(senderID, messageText)
+        coreFunct.sendText(senderID, "Awesome! The track was a success!");
+        setTimeout((err, res) => {
+            if (!err) {
+                prompts.secondSend(senderID);
+            }
+        }, 2000);
+        break;
   }
 }
    else if (!messageAttachments === '😀') {
