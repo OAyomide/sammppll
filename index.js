@@ -165,7 +165,7 @@ function trackRelease(recipientId) {
             ]
         }
     }
-    callsendAPI(messageData)
+    callSendAPI(messageData)
 }
 
 function getUserDp (event) {
