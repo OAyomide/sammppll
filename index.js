@@ -139,7 +139,9 @@ if (messageText){
         break;
 
     case 'Trap':
-        coreFunct.sendText(senderID, 'What do you want to call your new Track?')
+        coreFunct.sendText(senderID, 'What do you want to call your new Track?');
+        var myMessage = message.text
+        coreFunct.sendText(senderID, `The title of the ${myMessage}`);
   }
 }
    else if (!messageAttachments === '😀') {
