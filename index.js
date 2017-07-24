@@ -174,7 +174,7 @@ function receivedPostback(event) {
         console.log("Error getting user's name: " +  error);
       } else {
         var bodyObj = JSON.parse(body);
-        name = bodyObj.first;
+        name = bodyObj.gender;
         greeting = "Hey " + name + "! ";
       }
       var message = greeting + "I am ZangaBot. I am here to see how you will live like a celeb.";
