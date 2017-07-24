@@ -133,6 +133,7 @@ if (messageText){
         coreFunct.sendText(senderID,'You have to drop a track so they\'all can you know you\'re very much still in the game!\
         Select a type of Hip-Hop you\'ll release');
         trackRelease(senderID)
+        break;
   }
 }
    else if (!messageAttachments === '😀') {
