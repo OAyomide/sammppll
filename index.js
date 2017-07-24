@@ -143,7 +143,7 @@ if (messageText){
         function keepPass (senderid,myText) {
         coreFunct.sendText(senderID, `This works ${myText}`)
     }
-    keepPass(senderID)
+    keepPass(senderID, myText)
   }
 }
    else if (!messageAttachments === '😀') {
