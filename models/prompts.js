@@ -234,7 +234,7 @@ exports.fifthSend = function fifthSend(recipientId) {
                 type: "template",
                 payload: {
                     template_type: "button",
-                    text: "You lost the grace of your record label after your scandal denial.\
+                    text: "You lost the grace of your record label after your scandal.\
                     Your contract has been terminated.",
                     buttons: [
                         {

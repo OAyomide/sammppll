@@ -137,6 +137,8 @@ if (messageText){
         break;
     case '/tweet-status':
         randomFuncts.tweetStatus(senderID);
+        coreFunct.sendText(senderID, 'Right. Lets move on')
+        prompts.fifthSend(senderID);
         break;
 
     case 'cont':
