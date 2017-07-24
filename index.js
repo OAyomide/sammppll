@@ -254,7 +254,7 @@ case 'buy_jewelry':
             gifs.jewelryBought(senderID)
         }
     }, 6000);
-    coreFunct.sendText(senderID, 'How is your new chain?');
+    coreFunct.sendText(senderID, 'How is your new chain? please send \'cont\' continue the game');
     break;
   case 'party_hard':
   coreFunct.sendText(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
