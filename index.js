@@ -132,8 +132,9 @@ if (messageText){
     case '/buy':
         davidoStuffs.buyStuff(senderID);
         break;
-    case '😀':
+    case '😶':
         coreFunct.sendText(senderID,'Awesome. You have a denied scandal!');
+        prompts.fifthSend(senderID);
         break;
     case '/tweet-status':
         randomFuncts.tweetStatus(senderID);
@@ -364,7 +365,7 @@ case 'buy_jewelry':
        
     case 'deny_scandal':
         coreFunct.sendText(senderID, 'Congrats on your first scandal denial \
-        Send 😀 to claim your achievement 🏆. If you send the wrong one or don\'t send any, you are going lose the trophy but not the \
+        Send 😶 to claim your achievement 🏆. If you send the wrong one or don\'t send any, you are going lose the trophy but not the \
         scandal (of course!)');
         break;
 
