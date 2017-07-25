@@ -137,8 +137,11 @@ if (messageText){
         break;
     case '/tweet-status':
         randomFuncts.tweetStatus(senderID);
-        coreFunct.sendText(senderID, 'Right. Lets move on. Send /buy to buy something for yourself')
-        
+        setTimeout((err, res) => {
+            if (!err) {
+                coreFunct.sendText(senderID, 'Right. Lets move on. Send /buy to buy something for yourself');        
+            }
+        }, 2000);
         break;
 
     case 'cont':
