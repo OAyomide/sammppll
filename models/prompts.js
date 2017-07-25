@@ -300,6 +300,35 @@ exports.continueSend = function continueSend(recipientId) {
 };
 
 
+exports.continueGame = function continueGame(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "Click below to continue",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Continue",
+                            payload: "continue"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
+
+
+
+
+
+
 exports.sixthSend = function sixthSend(recipientId) {
     var messageData = {
         recipient: {

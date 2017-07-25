@@ -391,7 +391,7 @@ case 'buy_jewelry':
         break;
 
         case 'buy_house':
-            setTimeout((err, res) => {
+            setTimeout((err) => {
                 if (!err) {
                     gifs.HouseBought(senderID);
                 }
@@ -400,6 +400,11 @@ case 'buy_jewelry':
             prompts.continueSend(senderID);
             break;
 
+
+        case 'leave_label':
+            coreFunct.sendText(senderID, 'You have left! You currently have no label.')
+            prompts.continueGame(senderID);
+            break;
 
         case 'game_continue':
             coreFunct.sendText(senderID, 'You have reached the end of the game! More stories to be added. I will notify you once there is more to play!');
