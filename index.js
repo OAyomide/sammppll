@@ -370,14 +370,8 @@ case 'buy_jewelry':
         break;
 
     case 'confirm_scandal':
-        setTimeout((err, res) => {
-            if (err) {
-                console.log('Eroor');
-                coreFunct.sendText(senderID, 'Please try again!')
-            }
-            else if (!err) {
+        setTimeout(() => {
                 gifs.confirmScandalGif(senderID);
-            }
         }, 8000);
         setTimeout((err, res) => {
             if(err) {
@@ -393,7 +387,6 @@ case 'buy_jewelry':
         case 'buy_house':
         gifs.HouseBought(senderID);
             setTimeout(() => {
-                    
                     prompts.continueSend(senderID);
             }, 3000);
             coreFunct.sendText(senderID, 'Nice House!');
