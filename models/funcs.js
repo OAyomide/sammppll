@@ -4,7 +4,7 @@ exports.tweetStatus = function tweetStatus(recipientId) {
         'Not so good.. really not so good😑',
         'Fair',
         'Looking good. . .Tweet more!',
-        'There were a lot of criticism 😮',
+        'There was a lot of criticism 😮',
         'People loved it!',
         'Tons of retweets!🎉 People loved it',
         'You should try better next time 😰',
