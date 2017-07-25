@@ -143,7 +143,7 @@ if (messageText){
             }
         }, 2000);
 
-        setTimeout(function() {
+        setTimeout((err, res) => {
             if (!err) {
                 prompts.thirdSend(senderID);
             }
