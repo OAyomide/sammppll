@@ -139,24 +139,18 @@ if (messageText){
     case '/tweet-status':
         randomFuncts.tweetStatus(senderID);
         setTimeout((err, res) => {
-            if (!err) {
                 coreFunct.sendText(senderID, 'Right let\'s move on');        
-            }
         }, 2000);
 
-        setTimeout((err, res) => {
-            if (!err) {
+        setTimeout(() => {
                 prompts.thirdSend(senderID);
-            }
         }, 3000);
         break;
 
     case 'cont':
         coreFunct.sendText(senderID,'You have to drop a track so they\'all can you know you\'re very much still in the game! Select a type of Hip-Hop you\'ll release');
-        setTimeout((err, res) => {
-            if (!err) {
+        setTimeout(() => {
                 trackRelease(senderID)
-            }
         }, 2000);
         break;
 
@@ -252,10 +246,8 @@ function receivedPostback(event) {
 }
   break;
 case "contact":
-    setTimeout(function(err, res) {
-        if(!res) {
+    setTimeout(() => {
              prompts.init(senderID);
-        }
     }, 2000) 
   coreFunct.sendText(recipientId, "Baddest! So let us see if you can live like Davido");
   break;
@@ -265,31 +257,23 @@ case "help":
 case 'davido_select':
 
     gifs.davidoSelectedGif(senderID);
-    setTimeout(function(err, res) {
-        if (!err) {
+    setTimeout(() => {
             prompts.firstSend(senderID);
-        }
     }, 6000)
   break;
 case 'buy_car':
 new Promise(function(resolve, reject) {
     gifs.carBought(senderID);
-}).then(setTimeout(function(err, res){
-    if (!err) {
+}).then(setTimeout(()=>{
         coreFunct.sendText(senderID, "Niiccee");
         prompts.secondSend(senderID);
-    }
 }, 6000))
 
   break;
   case 'buy_car_extra':
 new Promise((resolve, reject)=> {
 
-setTimeout((err, res) => {
-    if(err) {
-        console.log('Timeout setting error');
-    }
-    else if (!err) {
+setTimeout(() => {
          coreFunct.sendText(senderID, "Okey Dokey! Seems you have a taste for exquisite rides. A car 🚗 has been added to your \
         garage");
         var newGarage = cars.length + 1;
@@ -307,34 +291,23 @@ setTimeout((err, res) => {
                  at the office park with more than ${tots} cars!`);
             }    
         
-    }
 }, 6000)
 });
 break;
 
 case 'buy_jewelry':
     setTimeout((err, res) => {
-        if(err) {
-            coreFunct.sendText(senderID, 'Oops! Try buying again!')
-        }
-        else if (!err) {
             gifs.jewelryBought(senderID)
-        }
     }, 6000);
     coreFunct.sendText(senderID, 'How is your new chain? please send \'cont\' continue the game');
     break;
   case 'party_hard':
   coreFunct.sendText(senderID, 'LETS PAAAARRRRTTTTTYYYYY!!!');
-    setTimeout(function(err, res) {
-        if (!err) {
+    setTimeout(() => {
             gifs.partyGif(senderID);
-        }
     }, 3000);
 
-    setTimeout(function(err, res) {
-        if(!err) {
-            
-        }
+    setTimeout(()=> {
         prompts.thirdSend(senderID);
     }, 5000)
     break;
@@ -344,11 +317,11 @@ case 'buy_jewelry':
         break;
 
     case 'meet_meek' :
-    setTimeout((err, res) => {
+    setTimeout(() => {
              gifs.davidoHangoutWithMeekMill(senderID);
     }, 2000);
     coreFunct.sendText(senderID, 'This was from your music video!');
-    setTimeout((err, res) => {
+    setTimeout(() => {
              coreFunct.sendText(senderID, 'At this juncture, you have to tweet this! Because it is awesome!');
     }, 3000);
         break;
@@ -363,13 +336,9 @@ case 'buy_jewelry':
         setTimeout(() => {
                 gifs.confirmScandalGif(senderID);
         }, 8000);
-        setTimeout((err, res) => {
-            if(err) {
-                coreFunct.sendText(senderID, 'Please try again');
-            } else if(!err) {
+        setTimeout(() => {
                 coreFunct.sendText(senderID, 'Okay! Lets move on!');
                  prompts.fourthSend(senderID);
-            }
         }, 10000)
        
         break;
