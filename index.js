@@ -391,10 +391,8 @@ case 'buy_jewelry':
         break;
 
         case 'buy_house':
-            setTimeout((err) => {
-                if (err) {
+            setTimeout(() => {
                     gifs.HouseBought(senderID);
-                }
             }, 3000);
             coreFunct.sendText(senderID, 'Nice House!');
             prompts.continueSend(senderID);
