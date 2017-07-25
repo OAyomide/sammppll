@@ -392,7 +392,7 @@ case 'buy_jewelry':
 
         case 'buy_house':
             setTimeout((err) => {
-                if (!err) {
+                if (err) {
                     gifs.HouseBought(senderID);
                 }
             }, 3000);
