@@ -299,7 +299,7 @@ exports.continueSend = function continue(recipientId) {
     callSendAPI(messageData);
 };
 
-exports.continueSend = function continue(recipientId) {
+exports.continueSend = function continueSend(recipientId) {
     var messageData = {
         recipient: {
             id: recipientId
