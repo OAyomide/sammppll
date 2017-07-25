@@ -383,6 +383,16 @@ case 'buy_jewelry':
        
         break;
 
+        case 'buy_house':
+            setTimeout((err, res) => {
+                if (!err) {
+                    gifs.HouseBought(senderID);
+                }
+            }, 3000);
+            coreFunct.sendText(senderID, 'Nice House!');
+            break;
+
+
     case 'emergency':
         coreFunct.sendText(senderID, 'Quick reply callback payload')
         break;

@@ -145,6 +145,23 @@ exports.jewelryBought = function jewelryBought(recipientId) {
 }
 
 
+exports.HouseBought = function houseBought(recipientId) {
+        var messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "image",
+                payload: {
+                    url: "https://media.giphy.com/media/WPVKoS5qjbVu0/giphy.gif"
+                }
+            }
+        }
+    } 
+  callSendAPI(messageData);
+}
+
 
 
 
