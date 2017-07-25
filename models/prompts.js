@@ -275,30 +275,6 @@ exports.fifthSend = function fifthSend(recipientId) {
     callSendAPI(messageData);
 };
 
-exports.continueSend = function continue(recipientId) {
-    var messageData = {
-        recipient: {
-            id: recipientId
-        }, message: {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "button",
-                    text: "Click below to continue",
-                    buttons: [
-                        {
-                            type: "postback",
-                            title: "Continue",
-                            payload: "game_continue"
-                        }
-                    ]
-                }
-            }
-        }
-    };
-    callSendAPI(messageData);
-};
-
 exports.continueSend = function continueSend(recipientId) {
     var messageData = {
         recipient: {
