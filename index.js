@@ -359,9 +359,12 @@ case 'buy_jewelry':
             break;
 
         case 'game_continue':
-            coreFunct.sendText(senderID, 'You have reached the end of the game! More stories to be added. I will notify you once there is more to play!');
+            coreFunct.sendText(senderID, 'You have reached the end of the first level! I will notify you once there is more to play!');
             break;
 
+        case 'continue':
+            prompts.sixthSend(senderID);
+            break;
 
     case 'emergency':
         coreFunct.sendText(senderID, 'Quick reply callback payload')
