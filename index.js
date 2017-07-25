@@ -390,6 +390,12 @@ case 'buy_jewelry':
                 }
             }, 3000);
             coreFunct.sendText(senderID, 'Nice House!');
+            prompts.continueSend(senderID);
+            break;
+
+
+        case 'game_continue':
+            coreFunct.sendText(senderID, 'You have reached the end of the game! More stories to be added. I will notify you once there is more to play!');
             break;
 
 

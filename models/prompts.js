@@ -260,13 +260,60 @@ exports.fifthSend = function fifthSend(recipientId) {
                 type: "template",
                 payload: {
                     template_type: "button",
-                    text: "You lost the grace of your record label after your scandal denial.\
-                    Your contract has been terminated.",
+                    text: "You lost the grace of your record label after your scandal denial. Your contract has been terminated.",
                     buttons: [
                         {
                             type: "postback",
                             title: "Leave label",
                             payload: "leave_label"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
+
+exports.continueSend = function continue(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "Click below to continue",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Continue",
+                            payload: "game_continue"
+                        }
+                    ]
+                }
+            }
+        }
+    };
+    callSendAPI(messageData);
+};
+
+exports.continueSend = function continue(recipientId) {
+    var messageData = {
+        recipient: {
+            id: recipientId
+        }, message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "Click below to continue",
+                    buttons: [
+                        {
+                            type: "postback",
+                            title: "Continue",
+                            payload: "game_continue"
                         }
                     ]
                 }
