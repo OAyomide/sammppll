@@ -139,9 +139,15 @@ if (messageText){
         randomFuncts.tweetStatus(senderID);
         setTimeout((err, res) => {
             if (!err) {
-                coreFunct.sendText(senderID, 'Right. Lets move on. Send /buy to buy something for yourself');        
+                coreFunct.sendText(senderID, 'Right let\'s move on');        
             }
         }, 2000);
+
+        setTimeout(function() {
+            if (!err) {
+                prompts.thirdSend(senderID);
+            }
+        }, 3000);
         break;
 
     case 'cont':
