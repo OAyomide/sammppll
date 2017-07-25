@@ -367,7 +367,10 @@ case 'buy_jewelry':
             break;
         
         case 'accept_label_deal':
-            coreFunct.sendText(senderID);
+            coreFunct.sendText(senderID 'You are now in the Old Savage Records');
+            setTimeout(() => {
+                prompts.scandalReSurfaced(senderID);
+            }, 2000)
             break;
 
     case 'emergency':

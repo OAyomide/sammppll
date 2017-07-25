@@ -251,29 +251,7 @@ exports.fifthSend = function fifthSend(recipientId) {
 };
 
 
-exports.fifthSend = function fifthSend(recipientId) {
-    var messageData = {
-        recipient: {
-            id: recipientId
-        }, message: {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "button",
-                    text: "You lost the grace of your record label after your scandal denial. Your contract has been terminated.",
-                    buttons: [
-                        {
-                            type: "postback",
-                            title: "Leave label",
-                            payload: "leave_label"
-                        }
-                    ]
-                }
-            }
-        }
-    };
-    callSendAPI(messageData);
-};
+
 
 exports.continueSend = function continueSend(recipientId) {
     var messageData = {
