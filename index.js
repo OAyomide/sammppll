@@ -345,22 +345,12 @@ case 'buy_jewelry':
 
     case 'meet_meek' :
     setTimeout((err, res) => {
-        if (err) {
-            coreFunct.sendText(senderID, "Sorry, please try again.")
-        } else if (!err) {
-             gifs.davidoHangoutWithMeekMill(senderID)
-        }
-    }, 6000);
+             gifs.davidoHangoutWithMeekMill(senderID);
+    }, 2000);
     coreFunct.sendText(senderID, 'This was from your music video!');
     setTimeout((err, res) => {
-        if (err) {
-            coreFunct.sendText(senderID, "Oh No!! Try again!");
-
-        }
-        else if (!err) {
              coreFunct.sendText(senderID, 'At this juncture, you have to tweet this! Because it is awesome!');
-        }
-    }, 7000);
+    }, 3000);
         break;
        
     case 'deny_scandal':
