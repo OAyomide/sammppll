@@ -365,6 +365,10 @@ case 'buy_jewelry':
         case 'continue':
             prompts.sixthSend(senderID);
             break;
+        
+        case 'accept_label_deal':
+            coreFunct.sendText(senderID);
+            break;
 
     case 'emergency':
         coreFunct.sendText(senderID, 'Quick reply callback payload')
