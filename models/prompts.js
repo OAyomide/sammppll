@@ -33,15 +33,6 @@ exports.init = function init (recipientId){
                                 title: "Select",
                                 payload: "wizkid_select"
                             }]
-                        }, {
-                            title: "Tiwa Savage",
-                            image_url: "https://upload.wikimedia.org/wikipedia/commons/e/e3/Gentleman-Video-Shoot-January-2014-BellaNaija-027-402x600.jpg",
-                            subtitle: "Artiste",
-                            buttons: [{
-                                type: "postback",
-                                title: "Select",
-                                payload: "tiwa_select"
-                            }]
                         }
                     ]
                 }

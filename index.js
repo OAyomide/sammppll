@@ -261,6 +261,13 @@ case 'davido_select':
             prompts.firstSend(senderID);
     }, 6000)
   break;
+  case 'wizkid_select':
+
+    gifs.davidoSelectedGif(senderID);
+    setTimeout(() => {
+            prompts.firstSend(senderID);
+    }, 6000)
+  break;
 case 'buy_car':
 new Promise(function(resolve, reject) {
     gifs.carBought(senderID);
