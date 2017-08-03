@@ -349,7 +349,7 @@ case 'buy_jewelry':
     }, 2000);
     coreFunct.sendText(senderID, 'This was from your music video!');
     setTimeout(() => {
-             coreFunct.sendText(senderID, 'At this juncture, you have to tweet this! Because it is awesome!');
+             coreFunct.sendText(senderID, 'At this juncture, you have to tweet this! Because it is awesome! Send @tweet- before your tweet, so I can know you want to tweet');
     }, 3000);
         break;
        
