@@ -118,6 +118,8 @@ request.analyseText(messageText).then(function(res){
     } else if (intent.slug === '30billiontweetreply') {
         gifs.N30Btweetmeme(senderID);
         gifs.N30Btweetmeme2(senderID);
+    } else if (intent.slug === 'function') {
+        prompts.funcReply(senderID);
     }
 })
 

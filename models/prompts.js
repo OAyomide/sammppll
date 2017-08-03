@@ -1,5 +1,6 @@
 var fb_page_token = process.env.FB_ACCESS_TOKEN;
 var URL = process.env.SERVER_URL;
+var conrefunctions = require('./corefunct')
 var request = require('request');
 exports.init = function init (recipientId){
     var messageData = {
@@ -293,7 +294,14 @@ exports.continueGame = function continueGame(recipientId) {
     callSendAPI(messageData);
 };
 
-
+exports.funcReply = (recipientId) => {
+    var responseArray = [
+        'I can send you random funny facts about Jeff Dean. Ask me for a joke or how he looks, for example',
+        'Send Jeff Dean facts, image, etc. Just ask nicely!'
+    ];
+    var response = Math.floor(Math.random() * responseArray.length);
+    corefunctions.sendText(recipientId, responseArray[response]);
+};
 
 
 
