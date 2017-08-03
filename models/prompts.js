@@ -296,8 +296,8 @@ exports.continueGame = function continueGame(recipientId) {
 
 exports.funcReply = (recipientId) => {
     var responseArray = [
-        'I can send you random funny facts about Jeff Dean. Ask me for a joke or how he looks, for example',
-        'Send Jeff Dean facts, image, etc. Just ask nicely!'
+        'I am here to emulate how you would live as a celebrity via role playing',
+        'Play a role playing game with you, where you are the celebrity!'
     ];
     var response = Math.floor(Math.random() * responseArray.length);
     corefunctions.sendText(recipientId, responseArray[response]);
