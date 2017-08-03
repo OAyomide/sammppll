@@ -164,6 +164,24 @@ if (messageText){
             }
         }, 2000);
         break;
+
+    case 'Rap':
+        coreFunct.sendText(senderID, "That flopped! Yikes!");
+        setTimeout((err, res) => {
+            if (!err) {
+                prompts.secondSend(senderID);
+            }
+        }, 2000);
+        break;
+
+    case 'Afro-pop':
+        coreFunct.sendText(senderID, "Perfect! You hit it hard! Well done");
+        setTimeout((err, res) => {
+            if (!err) {
+                prompts.secondSend(senderID);
+            }
+        }, 2000);
+        break;
   }
 }
    else if (!messageAttachments === '😀') {
